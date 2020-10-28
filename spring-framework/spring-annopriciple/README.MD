@@ -17,8 +17,36 @@
        c) request 同一次请求 
        d) session 同一个会话级别 
  
- 5.往IOC 容器中添加组件的方式
+5. 往IOC 容器中添加组件的方式
     ①:通过@CompentScan +@Controller @Service @Respository @compent 
         适用场景: 针对我们自己写的组件可以通过该方式来进行加载到容器中。 
     ②:通过@Bean的方式来导入组件 
     ③:通过@Import来导入组件 （导入组件的id为全类名路径） (适用于导入第三方组件的类)
+
+6.  bean的生命周期
+    bean的创建 ----->初始化------->销毁
+    三种初始化销毁方法
+    ①: 利用@Bean的inieMethod 以及destroyMethod属性指定初始化以及销毁方法
+    ②：通过 InitializingBean和DisposableBean 的二个接口实现bean的初始化以及销毁方法
+    ③: 通过JSR250规范 提供的注解@PostConstruct 和@ProDestory标注的方法
+    ④:通过Spring的BeanPostProcessor的 bean的后置处理器会拦截所有bean创建过程
+        postProcessBeforeInitialization 在init方法之前调用 
+        postProcessAfterInitialization 在init方法之后调用
+    注意：
+    针对单实例bean的话，容器启动的时候，bean的对象就创建了，而且容器销毁的时候，也会调用Bean的销毁方法 
+    针对多实例bean的话,容器启动的时候，bean是不会被创建的而是在获取bean的时候被创建，而且bean的销毁不受 IOC容器的管理.
+
+7.  自动装配
+    a:自动装配首先时按照类型进行装配，若在IOC容器中发现了多个相同类型的组件，那么就按照 属性名称来进行装配
+    b:假设我们需要指定特定的组件来进行装配，我们可以通过使用@Qualifier("MistyDao")来指定装配的组件 
+        或者在配置类上的@Bean加上@Primary注解
+    c:假设我们容器中即没有MistyDao 和MistyDao2,那么在装配的时候就会抛出异常
+        若我们想不抛异常 ，我们需要指定 required为false的时候可以了
+    d:@Resource(JSR250规范) 
+        功能和@AutoWired的功能差不多一样，但是不支持@Primary 和@Qualifier的支持 
+    e:@InJect（JSR330规范） 
+        需要导入jar包依赖 功能和支持@Primary功能 ,但是没有Require=false的功能
+    f：使用autowired 可以标注在方法上
+        标注在set方法上
+        标注在构造方法上
+        标注在配置类上的入参中（可以不写）

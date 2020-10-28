@@ -1,4 +1,4 @@
-package com.misty.spring.importmethod.component;
+package com.misty.spring.importmethod.compent;
 
 /**
  * @ClassName Dog

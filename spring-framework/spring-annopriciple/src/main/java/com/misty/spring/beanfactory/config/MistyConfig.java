@@ -1,6 +1,6 @@
 package com.misty.spring.beanfactory.config;
 
-import com.misty.spring.beanfactory.component.CarFactoryBean;
+import com.misty.spring.beanfactory.compent.CarFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;

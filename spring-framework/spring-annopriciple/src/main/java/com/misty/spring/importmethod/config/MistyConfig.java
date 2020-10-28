@@ -1,10 +1,9 @@
 package com.misty.spring.importmethod.config;
 
-import com.misty.spring.importmethod.component.Car;
-import com.misty.spring.importmethod.component.Person;
+import com.misty.spring.importmethod.compent.Car;
+import com.misty.spring.importmethod.compent.Person;
 import com.misty.spring.importmethod.importselect.MistyBeanDefinitionRegister;
 import com.misty.spring.importmethod.importselect.MistyImportSelector;
-import javafx.scene.chart.ValueAxis;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 

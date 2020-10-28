@@ -1,4 +1,4 @@
-package com.misty.spring.beanfactory.component;
+package com.misty.spring.beanfactory.compent;
 
 import org.springframework.beans.factory.FactoryBean;
 

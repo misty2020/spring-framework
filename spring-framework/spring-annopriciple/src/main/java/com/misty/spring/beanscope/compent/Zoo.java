@@ -1,4 +1,4 @@
-package com.misty.spring.beanscope.pojo;
+package com.misty.spring.beanscope.compent;
 
 /**
  * @ClassName Zoo

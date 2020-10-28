@@ -3,9 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="car" class="com.misty.spring.beanfactory.component.Car"></bean>
+    <bean id="car" class="com.misty.spring.beanfactory.compent.Car"></bean>
 
-<!--    <bean id="driverFactoryBean" class="com.misty.spring.beanfactory.component.DriverFactoryBean">-->
+<!--    <bean id="driverFactoryBean" class="com.misty.spring.beanfactory.compent.DriverFactoryBean">-->
 <!--        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/misty"></property>-->
 <!--    </bean>-->
 

@@ -1,9 +1,9 @@
 package com.misty.spring.beanscope;
 
 import com.misty.spring.beanscope.config.MistyConfig;
-import com.misty.spring.beanscope.pojo.Car;
-import com.misty.spring.beanscope.pojo.Person;
-import com.misty.spring.beanscope.pojo.Zoo;
+import com.misty.spring.beanscope.compent.Car;
+import com.misty.spring.beanscope.compent.Person;
+import com.misty.spring.beanscope.compent.Zoo;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**

@@ -1,6 +1,6 @@
 package com.misty.spring.importmethod.importselect;
 
-import com.misty.spring.importmethod.component.Cat;
+import com.misty.spring.importmethod.compent.Cat;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;

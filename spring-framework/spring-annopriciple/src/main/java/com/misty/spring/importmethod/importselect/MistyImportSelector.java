@@ -13,6 +13,6 @@ import org.springframework.core.type.AnnotationMetadata;
 public class MistyImportSelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-        return new String[]{"com.misty.spring.importmethod.component.Dog"};
+        return new String[]{"com.misty.spring.importmethod.compent.Dog"};
     }
 }

@@ -1,8 +1,8 @@
 package com.misty.spring.conditional.config;
 
 
-import com.misty.spring.conditional.component.MistyAspect;
-import com.misty.spring.conditional.component.MistyLog;
+import com.misty.spring.conditional.compent.MistyAspect;
+import com.misty.spring.conditional.compent.MistyLog;
 import com.misty.spring.conditional.condition.MistyCondition;
 import org.springframework.context.annotation.*;
 

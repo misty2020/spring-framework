@@ -1,4 +1,4 @@
-package com.misty.spring.conditional.component;
+package com.misty.spring.conditional.compent;
 
 /**
  * @ClassName MistyAspect
