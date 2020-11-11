@@ -50,3 +50,16 @@
         标注在set方法上
         标注在构造方法上
         标注在配置类上的入参中（可以不写）
+
+8. bean与bean定义的区别 
+      bean定义是用于描述对应的beanc(参数  是否懒加载)   
+      
+      //向spring容器中注入一些内部的bean定义
+      AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry); 
+      
+      //代码块 AnnotationConfigApplicationContext
+      	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
+      		this(); //向spring容器中注入一些内部的bean定义 以及配置扫包策略
+      		register(annotatedClasses); //将我们自己的配置类加载到spring 容器中
+      		refresh();
+      	}
