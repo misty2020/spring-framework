@@ -1,7 +1,7 @@
 1.BeanFactory 与 ApplicationContext 本质的区别
    beanfactory 懒加载  
    ApplicationContext 非懒加载,也可以改变成懒加载
-   
+
 2.  IOC容器的核心思想
         资源不由使用资源双方管理，而是由不使用资源的第三发管理
             带了一些好处：
@@ -16,7 +16,7 @@
        b) prototype 多实例的 
        c) request 同一次请求 
        d) session 同一个会话级别 
- 
+
 5. 往IOC 容器中添加组件的方式
     ①:通过@CompentScan +@Controller @Service @Respository @compent 
         适用场景: 针对我们自己写的组件可以通过该方式来进行加载到容器中。 
@@ -63,3 +63,42 @@
       		register(annotatedClasses); //将我们自己的配置类加载到spring 容器中
       		refresh();
       	}
+      	
+
+9.spring IOC getBean 
+
+      原型而不能解决循环依赖的原因：没有进行缓存
+      
+      <bean abstract="true"></bean>  此时的bean是不能是实例化，相当于一个模板bean
+      
+      循环依赖与@dependOn 的区别:
+          @dependOn 不是循环依赖  @dependOn的bean 创建当前bean时需要创建所依赖的bean 
+              用于组件开发是指定bean 加载的顺序
+      
+      //不会创建代理对象，因为此时bean 还没有实例化 但是可以获取所有的切面以及切点放到缓存池进行缓存
+      // Give BeanPostProcessors a chance to return a proxy instead of the target bean instance.
+      Object bean = resolveBeforeInstantiation(beanName, mbdToUse);
+     
+      protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+          
+          //单例缓存池
+      	Object singletonObject = this.singletonObjects.get(beanName);
+      	//isSingletonCurrentlyInCreation(beanName) 判断当前bean是否正在创建
+      	if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
+      		synchronized (this.singletonObjects) {
+      			singletonObject = this.earlySingletonObjects.get(beanName);
+      			if (singletonObject == null && allowEarlyReference) {
+      				ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
+      				if (singletonFactory != null) {
+      					singletonObject = singletonFactory.getObject();
+      					this.earlySingletonObjects.put(beanName, singletonObject);
+      					this.singletonFactories.remove(beanName);
+      				}
+      			}
+      		}
+      	}
+      	return (singletonObject != NULL_OBJECT ? singletonObject : null);
+      }
+      
+      getBean的流程图
+        见spring getBean草图

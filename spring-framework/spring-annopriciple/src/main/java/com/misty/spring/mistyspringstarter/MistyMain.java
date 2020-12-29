@@ -13,6 +13,7 @@ public class MistyMain {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+        System.out.println(ac.getBean("mistyDao"));
         System.out.println(ac);
     }
 }
