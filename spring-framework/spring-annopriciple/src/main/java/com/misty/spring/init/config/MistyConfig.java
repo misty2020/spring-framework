@@ -4,6 +4,7 @@ import com.misty.spring.init.compent.Car;
 import com.misty.spring.init.compent.Cat;
 import com.misty.spring.init.compent.Person;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @Version 1.0
  **/
 @Configuration
+@ComponentScan(basePackages = "com.misty.spring.init.compent")
 public class MistyConfig {
 
     @Bean(initMethod = "initMethod",destroyMethod = "destory")
