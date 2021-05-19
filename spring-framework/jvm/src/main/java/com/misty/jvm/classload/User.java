@@ -9,17 +9,23 @@ package com.misty.jvm.classload;
  **/
 public class User {
 
-    private String uid;
+    private int uid;
 
     private String name;
 
-    private String sex;
+    public User(int uid, String name) {
+        this.uid = uid;
+        this.name = name;
+    }
 
-    public String getUid() {
+    public User() {
+    }
+
+    public int getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 
@@ -31,16 +37,13 @@ public class User {
         this.name = name;
     }
 
-    public String getSex() {
-        return sex;
+    @Override
+    protected void finalize() throws Throwable{
+        System.out.println("uid为"+uid+"即将被回收");
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public void sout(){
-        Object o = new Object();
-        System.out.println("自定义加载器");
-    }
+//    public void sout(){
+//        Object o = new Object();
+//        System.out.println("自定义加载器");
+//    }
 }
