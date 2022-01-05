@@ -22,7 +22,145 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4ea4a44-6a4d-4311-aefb-207b034b89f3" name="Changes" comment="spring简单应用" />
+    <list default="true" id="a4ea4a44-6a4d-4311-aefb-207b034b89f3" name="Changes" comment="spring简单应用">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/common/StringToUserConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/common/StringToUserPropertyEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/common/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/common/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/scan/OrgService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/scan/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/ApplicationListenerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/BeanDefinitionReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/BeanDefinitionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/BeanFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/MessageSourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/PropertyEditorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/ResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/resources/messages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-spring/src/main/resources/messages_en_US.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application-spring/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/application-spring/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/application-spring/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/application-spring/src/main/java/com/misty/spring/BeanDefinitionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/application-spring/src/main/java/com/misty/spring/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/application-spring/src/main/java/com/misty/spring/config/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/build/libs/jvm-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jmm/VolatileDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jmm/VolatileDemoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jmm/VolatileTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/AllotOnStack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/GCTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/HeapTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/JQLSample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/OOMTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/Math.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTestDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/TestDynamicLoad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/TestJDKClassLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/IOrderInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/MistBeanPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/MistValueBeanPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/OrgService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/misty/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/BeanDefinition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/BeanNameAware.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/BeanPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/InitializingBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/MistyApplicationContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/annotation/Autowired.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/annotation/Component.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/annotation/ComponentScan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/annotation/MistyValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/annotation/PostConstruct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/spring/annotation/Scope.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/misty-spring/src/main/java/com/misty/test/TestMistySpring.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/README.MD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/spring-getbean草图.eddx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/CarFactoryBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/DriverFactoryBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyBeanFactoryPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanscope/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Zoo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/beanscope/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/controller/MistyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/dao/MistyDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/filter/MistyFilterType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/MistyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/impl/MistyServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Boss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/concurrent/MistyMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Worker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/conditional/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/conditional/condition/MistyCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/conditional/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Cat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyBeanDefinitionRegister.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyImportSelector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Cat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/compent/MistyBeanPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/init/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/listener/MistConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/compent/MistCompent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyBeanDefinationRegisterPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/BaiDuService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/postprocess/MistyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/postprocess/compent/Compent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/postprocess/config/MistyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/java/com/misty/spring/postprocess/filter/MistyBeanPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/resources/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/application-spring/src/main/resources/beans.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-framework-5.3.x/spring-annopriciple/src/main/resources/ds.properties" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,8 +211,8 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,7 +222,7 @@
         <entry key="$PROJECT_DIR$/.." value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -114,12 +252,13 @@
     <property name="CLASS_PANEL_SPLIT_PROPORTION" value="0.37466162" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-framework-5.3.x" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/application-spring/src/main" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -138,22 +277,24 @@
       <recent name="com.misty.jvm.classload" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workCode\spring-framework\spring-framework\application-spring\src\main" />
+      <recent name="D:\workCode\spring-framework\spring-framework\application-spring" />
       <recent name="D:\workCode\spring-framework\spring-framework\jvm\src\main\java\com\misty\volatile" />
       <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\main\java\com\misty\spring\autowired\autowired\compent" />
       <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\main\resources" />
-      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\test\java" />
-      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\test\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workCode\spring-framework\spring-framework\application-spring\src\main\resources" />
+      <recent name="D:\workCode\spring-framework\spring-framework\application-spring\src\main\resources\i18n" />
       <recent name="D:\workCode\spring-framework\spring-framework\spring-framework-5.3.x" />
       <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.misty.scan" />
       <recent name="com.misty.misty" />
       <recent name="com.misty.spring.annotation" />
       <recent name="com.misty.jvm.classload" />
       <recent name="com.misty.spring.mistybfrpostprocessor" />
-      <recent name="com.misty.spring.init.config" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -161,111 +302,71 @@
       <command value="gradlew :spring-oxm:compileTestJava" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.spring-framework:application-spring [assemble]">
-    <configuration name="spring-framework-5.3.x [:spring-oxm:compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.3.x" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":spring-oxm:compileTestJava" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+  <component name="RunManager" selected="Application.PropertyEditorTest">
+    <configuration name="ApplicationListenerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.misty.springtest.ApplicationListenerTest" />
+      <module name="spring-framework.application-spring.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.misty.springtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="spring-framework:application-spring [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="BeanFactoryTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.misty.springtest.BeanFactoryTest" />
+      <module name="spring-framework.application-spring.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.misty.springtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="spring-framework:application-spring [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="MessageSourceTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.misty.springtest.MessageSourceTest" />
+      <module name="spring-framework.application-spring.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.misty.springtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="spring-framework:application-spring [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="classes" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="PropertyEditorTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.misty.springtest.PropertyEditorTest" />
+      <module name="spring-framework.application-spring.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.misty.springtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="spring-framework:application-spring [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="ResourceTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.misty.springtest.ResourceTest" />
+      <module name="spring-framework.application-spring.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.misty.springtest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -279,19 +380,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.spring-framework-5.3.x [:spring-oxm:compileTestJava]" />
-      <item itemvalue="Gradle.spring-framework:application-spring [clean]" />
-      <item itemvalue="Gradle.spring-framework:application-spring [classes]" />
-      <item itemvalue="Gradle.spring-framework:application-spring [build]" />
-      <item itemvalue="Gradle.spring-framework:application-spring [assemble]" />
+      <item itemvalue="Application.BeanFactoryTest" />
+      <item itemvalue="Application.MessageSourceTest" />
+      <item itemvalue="Application.ResourceTest" />
+      <item itemvalue="Application.ApplicationListenerTest" />
+      <item itemvalue="Application.PropertyEditorTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.spring-framework:application-spring [assemble]" />
-        <item itemvalue="Gradle.spring-framework:application-spring [build]" />
-        <item itemvalue="Gradle.spring-framework:application-spring [classes]" />
-        <item itemvalue="Gradle.spring-framework:application-spring [clean]" />
-        <item itemvalue="Gradle.spring-framework-5.3.x [:spring-oxm:compileTestJava]" />
+        <item itemvalue="Application.PropertyEditorTest" />
+        <item itemvalue="Application.ApplicationListenerTest" />
+        <item itemvalue="Application.ResourceTest" />
+        <item itemvalue="Application.MessageSourceTest" />
+        <item itemvalue="Application.BeanFactoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -374,7 +475,8 @@
       <workItem from="1640572527558" duration="3525000" />
       <workItem from="1641280618033" duration="5046000" />
       <workItem from="1641286126158" duration="4116000" />
-      <workItem from="1641352901081" duration="346000" />
+      <workItem from="1641352901081" duration="826000" />
+      <workItem from="1641353746470" duration="7981000" />
     </task>
     <task id="LOCAL-00001" summary="切换路径">
       <created>1602839495071</created>
@@ -621,43 +723,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.20.RELEASE/402928df85e5446ef023f30ac66cb67f24fae920/spring-context-4.3.20.RELEASE-sources.jar!/org/springframework/context/support/AbstractApplicationContext.java</url>
-          <line>1079</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="name.equals(&quot;mistyDao&quot;)" language="JAVA" />
-          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractBeanFactory.java</url>
-          <line>238</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="beanName.equals(&quot;mistyDao&quot;)" language="JAVA" />
-          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractBeanFactory.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/DefaultSingletonBeanRegistry.java</url>
-          <line>346</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="beanName.equals(&quot;mistyDao&quot;)" language="JAVA" />
-          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java</url>
-          <line>448</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="beanName.equals(&quot;mistyDao&quot;)" language="JAVA" />
-          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java</url>
-          <line>505</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/Math.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/application-spring/src/main/java/com/misty/springtest/BeanDefinitionTest.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
