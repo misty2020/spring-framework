@@ -1,0 +1,6 @@
+rootProject.name = 'spring-framework'
+include 'spring-annopriciple'
+include 'jvm'
+include 'misty-spring'
+include 'application-spring'
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../gradle-4.6" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/application-spring" />
+            <option value="$PROJECT_DIR$/jvm" />
+            <option value="$PROJECT_DIR$/misty-spring" />
+            <option value="$PROJECT_DIR$/spring-annopriciple" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.3.x" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../gradle-4.6" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/buildSrc" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/framework-bom" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/integration-tests" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-aop" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-aspects" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-beans" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-context" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-context-indexer" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-context-support" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-core" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-expression" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-instrument" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-jcl" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-jdbc" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-jms" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-messaging" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-orm" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-oxm" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-r2dbc" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-test" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-tx" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-web" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-webflux" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-webmvc" />
+            <option value="$PROJECT_DIR$/spring-framework-5.3.x/spring-websocket" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

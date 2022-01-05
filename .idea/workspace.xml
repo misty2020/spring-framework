@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a4ea4a44-6a4d-4311-aefb-207b034b89f3" name="Changes" comment="spring简单应用" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-framework-5.3.x">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/jvm">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-framework-5.3.x">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/application-spring">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-framework" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://C:/Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/sun/misc/Launcher.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1ixAoIANQYxsu1eII9TNPbNyJME" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="CLASS_PANEL_SPLIT_PROPORTION" value="0.37466162" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-framework-5.3.x" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.misty.jvm.classload" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workCode\spring-framework\spring-framework\jvm\src\main\java\com\misty\volatile" />
+      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\main\java\com\misty\spring\autowired\autowired\compent" />
+      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\main\resources" />
+      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\test\java" />
+      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple\src\test\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workCode\spring-framework\spring-framework\spring-framework-5.3.x" />
+      <recent name="D:\workCode\spring-framework\spring-framework\spring-annopriciple" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.misty.misty" />
+      <recent name="com.misty.spring.annotation" />
+      <recent name="com.misty.jvm.classload" />
+      <recent name="com.misty.spring.mistybfrpostprocessor" />
+      <recent name="com.misty.spring.init.config" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradlew :spring-oxm:compileTestJava" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.spring-framework:application-spring [assemble]">
+    <configuration name="spring-framework-5.3.x [:spring-oxm:compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.3.x" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":spring-oxm:compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework:application-spring [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework:application-spring [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework:application-spring [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="classes" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework:application-spring [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/application-spring" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.spring-framework-5.3.x [:spring-oxm:compileTestJava]" />
+      <item itemvalue="Gradle.spring-framework:application-spring [clean]" />
+      <item itemvalue="Gradle.spring-framework:application-spring [classes]" />
+      <item itemvalue="Gradle.spring-framework:application-spring [build]" />
+      <item itemvalue="Gradle.spring-framework:application-spring [assemble]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.spring-framework:application-spring [assemble]" />
+        <item itemvalue="Gradle.spring-framework:application-spring [build]" />
+        <item itemvalue="Gradle.spring-framework:application-spring [classes]" />
+        <item itemvalue="Gradle.spring-framework:application-spring [clean]" />
+        <item itemvalue="Gradle.spring-framework-5.3.x [:spring-oxm:compileTestJava]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a4ea4a44-6a4d-4311-aefb-207b034b89f3" name="Changes" comment="spring简单应用" />
+      <created>1602839042730</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602839042730</updated>
+      <workItem from="1602839049949" duration="625000" />
+      <workItem from="1602839772700" duration="338000" />
+      <workItem from="1602840144439" duration="844000" />
+      <workItem from="1603069668035" duration="1881000" />
+      <workItem from="1603155504157" duration="13000" />
+      <workItem from="1603780221215" duration="6685000" />
+      <workItem from="1603846556442" duration="13449000" />
+      <workItem from="1603933327007" duration="986000" />
+      <workItem from="1604018982402" duration="1198000" />
+      <workItem from="1604278296200" duration="239000" />
+      <workItem from="1605075149387" duration="7620000" />
+      <workItem from="1605142813301" duration="9914000" />
+      <workItem from="1605229015625" duration="6539000" />
+      <workItem from="1605488239817" duration="718000" />
+      <workItem from="1606111758053" duration="5553000" />
+      <workItem from="1606179735692" duration="599000" />
+      <workItem from="1606265675776" duration="2818000" />
+      <workItem from="1606352663685" duration="645000" />
+      <workItem from="1606438159906" duration="727000" />
+      <workItem from="1606697245768" duration="1919000" />
+      <workItem from="1606784054215" duration="6090000" />
+      <workItem from="1606870655144" duration="1388000" />
+      <workItem from="1606956560208" duration="3023000" />
+      <workItem from="1607303818766" duration="2677000" />
+      <workItem from="1607475210554" duration="1808000" />
+      <workItem from="1607502420948" duration="348000" />
+      <workItem from="1607561405211" duration="1228000" />
+      <workItem from="1607648540004" duration="7234000" />
+      <workItem from="1607907976940" duration="471000" />
+      <workItem from="1607908469209" duration="2516000" />
+      <workItem from="1607931595105" duration="605000" />
+      <workItem from="1607995397960" duration="4877000" />
+      <workItem from="1608079800148" duration="605000" />
+      <workItem from="1609135080889" duration="7025000" />
+      <workItem from="1609203779050" duration="4646000" />
+      <workItem from="1609289872383" duration="1198000" />
+      <workItem from="1609375874459" duration="614000" />
+      <workItem from="1609722225400" duration="1199000" />
+      <workItem from="1609807843436" duration="599000" />
+      <workItem from="1617777408002" duration="9544000" />
+      <workItem from="1618380351080" duration="2578000" />
+      <workItem from="1618452530915" duration="3000" />
+      <workItem from="1618471358230" duration="2551000" />
+      <workItem from="1618968038914" duration="599000" />
+      <workItem from="1618968997859" duration="810000" />
+      <workItem from="1618969903523" duration="6208000" />
+      <workItem from="1618991346806" duration="450000" />
+      <workItem from="1618991844140" duration="280000" />
+      <workItem from="1618992148011" duration="858000" />
+      <workItem from="1618993037614" duration="3967000" />
+      <workItem from="1619156436320" duration="2525000" />
+      <workItem from="1619311733577" duration="595000" />
+      <workItem from="1620869710590" duration="1199000" />
+      <workItem from="1620889355370" duration="600000" />
+      <workItem from="1620952224720" duration="123000" />
+      <workItem from="1621406133323" duration="3547000" />
+      <workItem from="1632726177462" duration="22398000" />
+      <workItem from="1633654077048" duration="24000" />
+      <workItem from="1634104970662" duration="1224000" />
+      <workItem from="1635402585250" duration="1790000" />
+      <workItem from="1635493295180" duration="1625000" />
+      <workItem from="1635748702484" duration="5271000" />
+      <workItem from="1639985342262" duration="3636000" />
+      <workItem from="1640071582823" duration="3984000" />
+      <workItem from="1640156872097" duration="595000" />
+      <workItem from="1640572527558" duration="3525000" />
+      <workItem from="1641280618033" duration="5046000" />
+      <workItem from="1641286126158" duration="4116000" />
+      <workItem from="1641352901081" duration="346000" />
+    </task>
+    <task id="LOCAL-00001" summary="切换路径">
+      <created>1602839495071</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602839495071</updated>
+    </task>
+    <task id="LOCAL-00002" summary="添加README">
+      <created>1602839528557</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602839528557</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加README">
+      <created>1602839840502</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602839840502</updated>
+    </task>
+    <task id="LOCAL-00004" summary="结构恢复">
+      <created>1602840336492</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1602840336492</updated>
+    </task>
+    <task id="LOCAL-00005" summary="结构恢复">
+      <created>1602840375165</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1602840375165</updated>
+    </task>
+    <task id="LOCAL-00006" summary="spring注解应用学习">
+      <created>1603848464121</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603848464121</updated>
+    </task>
+    <task id="LOCAL-00007" summary="spring注解应用学习">
+      <created>1603865878631</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603865878631</updated>
+    </task>
+    <task id="LOCAL-00008" summary="spring注解应用学习">
+      <created>1603871181845</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603871181845</updated>
+    </task>
+    <task id="LOCAL-00009" summary="spring注解应用学习">
+      <created>1603872084952</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603872084952</updated>
+    </task>
+    <task id="LOCAL-00010" summary="README内容修改">
+      <created>1605082964711</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605082964711</updated>
+    </task>
+    <task id="LOCAL-00011" summary="bean定义信息">
+      <created>1605086590681</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605086590681</updated>
+    </task>
+    <task id="LOCAL-00012" summary="调试源码">
+      <created>1605255558577</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605255558577</updated>
+    </task>
+    <task id="LOCAL-00013" summary="CountDownLatch 并发包的了解">
+      <created>1607668919893</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1607668919893</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ioc  getBean 的学习">
+      <created>1609228139453</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1609228139453</updated>
+    </task>
+    <task id="LOCAL-00015" summary="bean生命周期">
+      <created>1617867214507</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617867214507</updated>
+    </task>
+    <task id="LOCAL-00016" summary="bean生命周期">
+      <created>1617867782111</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617867782111</updated>
+    </task>
+    <task id="LOCAL-00017" summary="类加载的流程以及双亲委派模型">
+      <created>1618993739758</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1618993739758</updated>
+    </task>
+    <task id="LOCAL-00018" summary="JVM内存模型对象的创建，分配，回收">
+      <created>1621409110315</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1621409110315</updated>
+    </task>
+    <task id="LOCAL-00019" summary="简单的spring bean 的生命周期源码实现  扫描 创建bean 依赖注入 初始化前 初始化 初始化后 getBean 实现">
+      <created>1632816851409</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1632816851409</updated>
+    </task>
+    <task id="LOCAL-00020" summary="测试">
+      <created>1635840794270</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1635840794270</updated>
+    </task>
+    <task id="LOCAL-00021" summary="测试">
+      <created>1635841024003</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1635841024003</updated>
+    </task>
+    <task id="LOCAL-00022" summary="测试">
+      <created>1635841117859</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1635841117859</updated>
+    </task>
+    <task id="LOCAL-00023" summary="测试">
+      <created>1635841514938</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1635841514938</updated>
+    </task>
+    <task id="LOCAL-00024" summary="测试">
+      <created>1635842530941</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1635842530941</updated>
+    </task>
+    <task id="LOCAL-00025" summary="测试">
+      <created>1635842583803</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1635842583803</updated>
+    </task>
+    <task id="LOCAL-00026" summary="测试">
+      <created>1635842732693</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1635842732693</updated>
+    </task>
+    <task id="LOCAL-00027" summary="PostConstruct 注解实现">
+      <created>1640074994793</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1640074994793</updated>
+    </task>
+    <task id="LOCAL-00028" summary="spring  源码">
+      <created>1640585928982</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1640585928982</updated>
+    </task>
+    <task id="LOCAL-00029" summary="spring简单应用">
+      <created>1641287628909</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1641287628909</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="切换路径" />
+    <MESSAGE value="添加README" />
+    <MESSAGE value="结构恢复" />
+    <MESSAGE value="spring注解应用学习" />
+    <MESSAGE value="README内容修改" />
+    <MESSAGE value="bean定义信息" />
+    <MESSAGE value="调试源码" />
+    <MESSAGE value="CountDownLatch 并发包的了解" />
+    <MESSAGE value="ioc  getBean 的学习" />
+    <MESSAGE value="bean生命周期" />
+    <MESSAGE value="类加载的流程以及双亲委派模型" />
+    <MESSAGE value="JVM内存模型对象的创建，分配，回收" />
+    <MESSAGE value="简单的spring bean 的生命周期源码实现  扫描 创建bean 依赖注入 初始化前 初始化 初始化后 getBean 实现" />
+    <MESSAGE value="测试" />
+    <MESSAGE value="PostConstruct 注解实现" />
+    <MESSAGE value="spring  源码" />
+    <MESSAGE value="spring简单应用" />
+    <option name="LAST_COMMIT_MESSAGE" value="spring简单应用" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.20.RELEASE/402928df85e5446ef023f30ac66cb67f24fae920/spring-context-4.3.20.RELEASE-sources.jar!/org/springframework/context/support/AbstractApplicationContext.java</url>
+          <line>1079</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="name.equals(&quot;mistyDao&quot;)" language="JAVA" />
+          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractBeanFactory.java</url>
+          <line>238</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="beanName.equals(&quot;mistyDao&quot;)" language="JAVA" />
+          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractBeanFactory.java</url>
+          <line>284</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/DefaultSingletonBeanRegistry.java</url>
+          <line>346</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="beanName.equals(&quot;mistyDao&quot;)" language="JAVA" />
+          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java</url>
+          <line>448</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="beanName.equals(&quot;mistyDao&quot;)" language="JAVA" />
+          <url>jar://$PROJECT_DIR$/../../../gradle/repo/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.20.RELEASE/860ac794be00a0272e69736e5e580589da9912c4/spring-beans-4.3.20.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java</url>
+          <line>505</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-framework-5.3.x/jvm/src/main/java/com/misty/jvm/classload/Math.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

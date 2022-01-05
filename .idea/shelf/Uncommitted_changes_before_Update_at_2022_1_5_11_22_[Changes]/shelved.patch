@@ -1,0 +1,3978 @@
+Index: spring-annopriciple/src/main/java/com/misty/spring/postprocess/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/postprocess/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,23 +0,0 @@
+-package com.misty.spring.postprocess.config;
+-
+-import com.misty.spring.postprocess.compent.Compent;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:52
+- * @Version 1.0
+- **/
+-@Configuration
+-@ComponentScan(basePackages = "com.misty.spring.postprocess")
+-public class MistyConfig {
+-
+-    @Bean(initMethod = "init")
+-    public Compent compent() {
+-        return new Compent();
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Person.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Person.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Person.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Person.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.importmethod.compent;
+-
+-/**
+- * @ClassName Person
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:35
+- * @Version 1.0
+- **/
+-public class Person {
+-
+-    public Person() {
+-        System.out.println("Person构造方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyMain.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyMain.java b/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyMain.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyMain.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,17 +0,0 @@
+-package com.misty.spring.mistybfrpostprocessor;
+-
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyMain
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:52
+- * @Version 1.0
+- **/
+-public class MistyMain {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Car.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Car.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Car.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Car.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.spring.importmethod.compent;
+-
+-/**
+- * @ClassName Car
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:33
+- * @Version 1.0
+- **/
+-public class Car {
+-    public Car() {
+-        System.out.println("Car 构造方法");
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/misty/MistBeanPostProcessor.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/MistBeanPostProcessor.java b/misty-spring/src/main/java/com/misty/misty/MistBeanPostProcessor.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/MistBeanPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,36 +0,0 @@
+-package com.misty.misty;
+-
+-import com.misty.spring.BeanPostProcessor;
+-import com.misty.spring.annotation.Component;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.Method;
+-import java.lang.reflect.Proxy;
+-
+-/**
+- * @ClassName MistBean
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:36
+- * @Version 1.0
+- **/
+-@Component
+-public class MistBeanPostProcessor implements BeanPostProcessor {
+-
+-    @Override
+-    public Object postProcessAfterInitialization(Object bean, String beanName) throws Exception {
+-        //System.out.println("初始化的："+beanName);
+-
+-        if("orderService".equals(beanName)){
+-            Object proxyBean = Proxy.newProxyInstance(MistBeanPostProcessor.class.getClassLoader(), bean.getClass().getInterfaces(), new InvocationHandler() {
+-                @Override
+-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+-                    System.out.println("切面逻辑");
+-                    return method.invoke(bean, args);
+-                }
+-            });
+-            return proxyBean;
+-        }
+-        return bean;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/DriverFactoryBean.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/DriverFactoryBean.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/DriverFactoryBean.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/DriverFactoryBean.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,40 +0,0 @@
+-package com.misty.spring.beanfactory.compent;
+-
+-import org.springframework.beans.factory.FactoryBean;
+-
+-import java.sql.DriverManager;
+-
+-/**
+- * @ClassName DriverFactoryBean
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:06
+- * @Version 1.0
+- **/
+-public class DriverFactoryBean implements FactoryBean {
+-
+-    private String jdbcUrl;
+-
+-    public String getJdbcUrl() {
+-        return jdbcUrl;
+-    }
+-
+-    public void setJdbcUrl(String jdbcUrl) {
+-        this.jdbcUrl = jdbcUrl;
+-    }
+-
+-    @Override
+-    public Object getObject() throws Exception {
+-        return DriverManager.getDriver(jdbcUrl);
+-    }
+-
+-    @Override
+-    public Class<?> getObjectType() {
+-        return java.sql.Driver.class;
+-    }
+-
+-    @Override
+-    public boolean isSingleton() {
+-        return true;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,21 +0,0 @@
+-package com.misty.spring.importmethod;
+-import com.misty.spring.importmethod.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:57
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/JQLSample.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/JQLSample.java b/jvm/src/main/java/com/misty/jvm/JQLSample.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/JQLSample.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,37 +0,0 @@
+-package com.misty.jvm;
+-
+-import org.openjdk.jol.info.ClassLayout;
+-
+-/**
+- * @ClassName JQLSample
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/5/19 14:38
+- * @Version 1.0
+- **/
+-public class JQLSample {
+-    // -XX:+UseCompressedOops           默认开启的压缩所有指针
+-    // -XX:+UseCompressedClassPointers  默认开启的压缩对象头里的类型指针Klass Pointer
+-    // Oops : Ordinary Object Pointers
+-    public static void main(String[] args) {
+-        ClassLayout layout = ClassLayout.parseInstance(new Object());
+-        System.out.println(layout.toPrintable());
+-
+-        System.out.println();
+-        ClassLayout layout1 = ClassLayout.parseInstance(new int[]{});
+-        System.out.println(layout1.toPrintable());
+-
+-        System.out.println();
+-        ClassLayout classLayout = ClassLayout.parseInstance(new A());
+-        System.out.println(classLayout.toPrintable());
+-    }
+-
+-    private static class A {
+-                                    //8B mark word
+-                                    //4B Klass Pointer   如果关闭压缩-XX:-UseCompressedClassPointers或-XX:-UseCompressedOops，则占用8B
+-        private int count;          //4B
+-        private byte b;             //1B
+-        private String name;        //4B  如果关闭压缩-XX:-UseCompressedOops，则占用8B
+-        private Object o;           //4B  如果关闭压缩-XX:-UseCompressedOops，则占用8B
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jmm/VolatileTest.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jmm/VolatileTest.java b/jvm/src/main/java/com/misty/jmm/VolatileTest.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jmm/VolatileTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,52 +0,0 @@
+-package com.misty.jmm;
+-
+-import java.util.HashMap;
+-import java.util.HashSet;
+-import java.util.Map;
+-import java.util.Set;
+-
+-/**
+- * @ClassName VolatileTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/15 15:43
+- * @Version 1.0
+- **/
+-public class VolatileTest {
+-
+-    static  int x,y = 0;
+-
+-    public static void main(String[] args) throws InterruptedException {
+-        Set<String> resultSet = new HashSet<>();
+-        Map<String,Integer> resultMap = new HashMap<>();
+-
+-        for (int i = 0; i<1000000 ;i++){
+-            x = 0;
+-            y = 0;
+-            Thread one = new Thread(new Runnable() {
+-                @Override
+-                public void run() {
+-                    int a = y;
+-                    x = 1;
+-                    resultMap.put("a",a);
+-                }
+-            });
+-
+-            Thread other = new Thread(new Runnable() {
+-                @Override
+-                public void run() {
+-                    int b = x;
+-                    y = 1;
+-                    resultMap.put("b",b);
+-                }
+-            });
+-            one.start();
+-            other.start();
+-            one.join();
+-            other.join();
+-            resultSet.add("a="+resultMap.get("a")+","+"b="+resultMap.get("b"));
+-            System.out.println(resultSet);
+-        }
+-
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTestDemo.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTestDemo.java b/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTestDemo.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTestDemo.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,96 +0,0 @@
+-package com.misty.jvm.classload;
+-
+-
+-import sun.misc.PerfCounter;
+-
+-import java.io.FileInputStream;
+-import java.io.IOException;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-
+-/**
+- * @ClassName MyClassLoaderTest
+- * @Description 自定义类加载器
+- * @Author HeTao
+- * @Date 2021/4/21 15:11
+- * @Version 1.0
+- **/
+-public class MyClassLoaderTestDemo {
+-
+-    static class MyClassLoader extends ClassLoader{
+-        private String classpath;
+-
+-        public MyClassLoader(String classpath) {
+-            this.classpath = classpath;
+-        }
+-
+-        public String getClasspath() {
+-            return classpath;
+-        }
+-
+-        public void setClasspath(String classpath) {
+-            this.classpath = classpath;
+-        }
+-
+-        @Override
+-        protected Class<?> loadClass(String name, boolean resolve)
+-                throws ClassNotFoundException {
+-            synchronized (getClassLoadingLock(name)) {
+-                // First, check if the class has already been loaded
+-                Class<?> c = findLoadedClass(name);
+-                if (c == null) {
+-                    long t0 = System.nanoTime();
+-                    // If still not found, then invoke findClass in order
+-                    // to find the class.
+-                    long t1 = System.nanoTime();
+-                    if(name.startsWith("com.misty.jvm.classload")){
+-                        c = findClass(name);
+-                    }else {
+-                        c = this.getParent().loadClass(name);
+-                    }
+-
+-                    // this is the defining class loader; record the stats
+-                    PerfCounter.getParentDelegationTime().addTime(t1 - t0);
+-                    PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);
+-                    PerfCounter.getFindClasses().increment();
+-
+-                }
+-                if (resolve) {
+-                    resolveClass(c);
+-                }
+-                return c;
+-            }
+-        }
+-
+-        @Override
+-        protected Class<?> findClass(final String name) throws ClassNotFoundException {
+-            try{
+-                byte[] data = loadByte(name);
+-                //defineClass将一个字节数组转为Class对象，这个字节数组是class文件读取后最终的字节 数组。
+-                return defineClass(name,data,0,data.length);
+-            }catch (Exception e){
+-                throw new ClassNotFoundException();
+-            }
+-        }
+-
+-        private byte[] loadByte(String name) throws IOException {
+-            name = name.replaceAll("\\.","/");
+-            FileInputStream fileInputStream = new FileInputStream(classpath + "/" + name + ".class");
+-            int len = fileInputStream.available();
+-            byte[] data = new byte[len];
+-            fileInputStream.read(data);
+-            fileInputStream.close();
+-            return data;
+-        }
+-    }
+-
+-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+-        //初始化自定义类加载器  会先初始化父类classloader 其中会把自定义类加载的父加载器设置为应用程序类加载器AppClassLoader
+-        MyClassLoader classLoader = new MyClassLoader("D:/test");
+-        Class<?> clazz = classLoader.loadClass("com.misty.jvm.classload.User1");
+-        Object o = clazz.newInstance();
+-        Method method = clazz.getDeclaredMethod("sout", null);
+-        method.invoke(o,null);
+-        System.out.println(clazz.getClassLoader().getClass().getName());
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/dao/MistyDao.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/dao/MistyDao.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/dao/MistyDao.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/dao/MistyDao.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.spring.compentscan.dao;
+-
+-import org.springframework.stereotype.Repository;
+-
+-/**
+- * @ClassName MistyDao
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:54
+- * @Version 1.0
+- **/
+-@Repository
+-public class MistyDao {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyService.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyService.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyService.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,11 +0,0 @@
+-package com.misty.spring.mistyspringstarter;
+-
+-/**
+- * @ClassName MistyService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/12 15:14
+- * @Version 1.0
+- **/
+-public class MistyService {
+-}
+Index: spring-annopriciple/README.MD
+===================================================================
+diff --git a/spring-annopriciple/README.MD b/spring-annopriciple/README.MD
+deleted file mode 100644
+--- a/spring-annopriciple/README.MD	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,104 +0,0 @@
+-1.BeanFactory 与 ApplicationContext 本质的区别
+-   beanfactory 懒加载  
+-   ApplicationContext 非懒加载,也可以改变成懒加载
+-
+-2.  IOC容器的核心思想
+-        资源不由使用资源双方管理，而是由不使用资源的第三发管理
+-            带了一些好处：
+-                资源集中管理 实现资源可配置易管理
+-                降低了使用资源双方的依赖程度
+-3.  配置Bean的作用域对象
+-    在不指定@scope的情况下，所有的bean都是单例bean,并且是饿汉式加载（IOC容器启动实例就创建）
+-    指定@scope为prototype 表示为多例 并且是懒汉式加载（IOC容器启东市，不会创建对象，而是在第一次使用时才会创建）
+-
+-4. @Scope指定的作用域方法取值
+-       a) singleton 单实例的(默认) 
+-       b) prototype 多实例的 
+-       c) request 同一次请求 
+-       d) session 同一个会话级别 
+-
+-5. 往IOC 容器中添加组件的方式
+-    ①:通过@CompentScan +@Controller @Service @Respository @compent 
+-        适用场景: 针对我们自己写的组件可以通过该方式来进行加载到容器中。 
+-    ②:通过@Bean的方式来导入组件 
+-    ③:通过@Import来导入组件 （导入组件的id为全类名路径） (适用于导入第三方组件的类)
+-
+-6.  bean的生命周期
+-    bean的创建 ----->初始化------->销毁
+-    三种初始化销毁方法
+-    ①: 利用@Bean的inieMethod 以及destroyMethod属性指定初始化以及销毁方法
+-    ②：通过 InitializingBean和DisposableBean 的二个接口实现bean的初始化以及销毁方法
+-    ③: 通过JSR250规范 提供的注解@PostConstruct 和@ProDestory标注的方法
+-    ④:通过Spring的BeanPostProcessor的 bean的后置处理器会拦截所有bean创建过程
+-        postProcessBeforeInitialization 在init方法之前调用 
+-        postProcessAfterInitialization 在init方法之后调用
+-    注意：
+-    针对单实例bean的话，容器启动的时候，bean的对象就创建了，而且容器销毁的时候，也会调用Bean的销毁方法 
+-    针对多实例bean的话,容器启动的时候，bean是不会被创建的而是在获取bean的时候被创建，而且bean的销毁不受 IOC容器的管理.
+-
+-7.  自动装配
+-    a:自动装配首先时按照类型进行装配，若在IOC容器中发现了多个相同类型的组件，那么就按照 属性名称来进行装配
+-    b:假设我们需要指定特定的组件来进行装配，我们可以通过使用@Qualifier("MistyDao")来指定装配的组件 
+-        或者在配置类上的@Bean加上@Primary注解
+-    c:假设我们容器中即没有MistyDao 和MistyDao2,那么在装配的时候就会抛出异常
+-        若我们想不抛异常 ，我们需要指定 required为false的时候可以了
+-    d:@Resource(JSR250规范) 
+-        功能和@AutoWired的功能差不多一样，但是不支持@Primary 和@Qualifier的支持 
+-    e:@InJect（JSR330规范） 
+-        需要导入jar包依赖 功能和支持@Primary功能 ,但是没有Require=false的功能
+-    f：使用autowired 可以标注在方法上
+-        标注在set方法上
+-        标注在构造方法上
+-        标注在配置类上的入参中（可以不写）
+-
+-8. bean与bean定义的区别 
+-      bean定义是用于描述对应的beanc(参数  是否懒加载)   
+-      
+-      //向spring容器中注入一些内部的bean定义
+-      AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry); 
+-      
+-      //代码块 AnnotationConfigApplicationContext
+-      	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
+-      		this(); //向spring容器中注入一些内部的bean定义 以及配置扫包策略
+-      		register(annotatedClasses); //将我们自己的配置类加载到spring 容器中
+-      		refresh();
+-      	}
+-      	
+-
+-9.spring IOC getBean 
+-
+-      原型而不能解决循环依赖的原因：没有进行缓存
+-      
+-      <bean abstract="true"></bean>  此时的bean是不能是实例化，相当于一个模板bean
+-      
+-      循环依赖与@dependOn 的区别:
+-          @dependOn 不是循环依赖  @dependOn的bean 创建当前bean时需要创建所依赖的bean 
+-              用于组件开发是指定bean 加载的顺序
+-      
+-      //不会创建代理对象，因为此时bean 还没有实例化 但是可以获取所有的切面以及切点放到缓存池进行缓存
+-      // Give BeanPostProcessors a chance to return a proxy instead of the target bean instance.
+-      Object bean = resolveBeforeInstantiation(beanName, mbdToUse);
+-     
+-      protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+-          
+-          //单例缓存池
+-      	Object singletonObject = this.singletonObjects.get(beanName);
+-      	//isSingletonCurrentlyInCreation(beanName) 判断当前bean是否正在创建
+-      	if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
+-      		synchronized (this.singletonObjects) {
+-      			singletonObject = this.earlySingletonObjects.get(beanName);
+-      			if (singletonObject == null && allowEarlyReference) {
+-      				ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
+-      				if (singletonFactory != null) {
+-      					singletonObject = singletonFactory.getObject();
+-      					this.earlySingletonObjects.put(beanName, singletonObject);
+-      					this.singletonFactories.remove(beanName);
+-      				}
+-      			}
+-      		}
+-      	}
+-      	return (singletonObject != NULL_OBJECT ? singletonObject : null);
+-      }
+-      
+-      getBean的流程图
+-        见spring getBean草图
+\ No newline at end of file
+Index: spring-annopriciple/src/main/java/com/misty/spring/listener/MistyListener.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyListener.java b/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyListener.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyListener.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,21 +0,0 @@
+-package com.misty.spring.listener;
+-
+-import org.springframework.context.ApplicationEvent;
+-import org.springframework.context.ApplicationListener;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistyListener
+- * @Description 创建一个监听器
+- * @Author HeTao
+- * @Date 2020/11/11 16:30
+- * @Version 1.0
+- **/
+-@Component
+-public class MistyListener implements ApplicationListener {
+-
+-    @Override
+-    public void onApplicationEvent(ApplicationEvent event) {
+-        System.out.println("MistyListener 监听到一个事件"+event);
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/classload/User.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/classload/User.java b/jvm/src/main/java/com/misty/jvm/classload/User.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/classload/User.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,49 +0,0 @@
+-package com.misty.jvm.classload;
+-
+-/**
+- * @ClassName User
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/21 10:39
+- * @Version 1.0
+- **/
+-public class User {
+-
+-    private int uid;
+-
+-    private String name;
+-
+-    public User(int uid, String name) {
+-        this.uid = uid;
+-        this.name = name;
+-    }
+-
+-    public User() {
+-    }
+-
+-    public int getUid() {
+-        return uid;
+-    }
+-
+-    public void setUid(int uid) {
+-        this.uid = uid;
+-    }
+-
+-    public String getName() {
+-        return name;
+-    }
+-
+-    public void setName(String name) {
+-        this.name = name;
+-    }
+-
+-    @Override
+-    protected void finalize() throws Throwable{
+-        System.out.println("uid为"+uid+"即将被回收");
+-    }
+-
+-//    public void sout(){
+-//        Object o = new Object();
+-//        System.out.println("自定义加载器");
+-//    }
+-}
+Index: misty-spring/src/main/java/com/misty/misty/IOrderInterface.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/IOrderInterface.java b/misty-spring/src/main/java/com/misty/misty/IOrderInterface.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/IOrderInterface.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,13 +0,0 @@
+-package com.misty.misty;
+-
+-/**
+- * @ClassName IOrderInterface
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:55
+- * @Version 1.0
+- **/
+-public interface IOrderInterface {
+-
+-    public void test();
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyService.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyService.java b/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyService.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,36 +0,0 @@
+-package com.misty.spring.msityautowired.autowired.compent;
+-
+-
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-
+-/**
+- * @ClassName MistyService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:52
+- * @Version 1.0
+- **/
+-@Service
+-public class MistyService {
+-
+-    @Autowired
+-    private MistyDao mistyDao;
+-
+-    public MistyDao getMistyDao() {
+-        return mistyDao;
+-    }
+-
+-    public void setMistyDao(MistyDao mistyDao) {
+-        mistyDao = mistyDao;
+-    }
+-
+-    @Override
+-    public String toString() {
+-        return "MistyService{" +
+-                "mistyDao=" + mistyDao +
+-                '}';
+-    }
+-
+-
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/concurrent/Worker.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Worker.java b/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Worker.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Worker.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,59 +0,0 @@
+-package com.misty.spring.concurrent;
+-
+-import java.util.Random;
+-import java.util.concurrent.CountDownLatch;
+-import java.util.concurrent.TimeUnit;
+-
+-/**
+- * @ClassName Worker
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/12/11 14:16
+- * @Version 1.0
+- **/
+-public class Worker implements Runnable {
+-
+-    private CountDownLatch downLatch;
+-
+-    private String name;
+-
+-    public CountDownLatch getDownLatch() {
+-        return downLatch;
+-    }
+-
+-    public void setDownLatch(CountDownLatch downLatch) {
+-        this.downLatch = downLatch;
+-    }
+-
+-    public Worker(CountDownLatch downLatch, String name) {
+-        this.downLatch = downLatch;
+-        this.name = name;
+-    }
+-
+-    public Worker() {
+-    }
+-
+-    public String getName() {
+-        return name;
+-    }
+-
+-    public void setName(String name) {
+-        this.name = name;
+-    }
+-
+-    @Override
+-    public void run() {
+-        this.doWork();
+-        try {
+-            TimeUnit.SECONDS.sleep(new Random().nextInt(10));
+-        } catch (InterruptedException e) {
+-            e.printStackTrace();
+-        }
+-        System.out.println(this.name+"活干完了！");
+-        this.downLatch.countDown();
+-    }
+-
+-    private void doWork() {
+-        System.out.println(this.name+"正在干活");
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/spring/BeanNameAware.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/BeanNameAware.java b/misty-spring/src/main/java/com/misty/spring/BeanNameAware.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/BeanNameAware.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,13 +0,0 @@
+-package com.misty.spring;
+-
+-/**
+- * @ClassName BeanNameAware
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 16:08
+- * @Version 1.0
+- **/
+-public interface BeanNameAware {
+-
+-    void setBeanName(String name);
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/init/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,36 +0,0 @@
+-package com.misty.spring.init.config;
+-
+-import com.misty.spring.init.compent.Car;
+-import com.misty.spring.init.compent.Cat;
+-import com.misty.spring.init.compent.Person;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:24
+- * @Version 1.0
+- **/
+-@Configuration
+-@ComponentScan(basePackages = "com.misty.spring.init.compent")
+-public class MistyConfig {
+-
+-    @Bean(initMethod = "initMethod",destroyMethod = "destory")
+-    public Car car(){
+-        return new Car();
+-    }
+-
+-    @Bean
+-    public Person person(){
+-        return new Person();
+-    }
+-
+-    @Bean
+-    public Cat cat(){
+-        return new Cat();
+-    }
+-
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/filter/MistyFilterType.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/filter/MistyFilterType.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/filter/MistyFilterType.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/filter/MistyFilterType.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,35 +0,0 @@
+-package com.misty.spring.compentscan.filter;
+-
+-import org.springframework.core.io.Resource;
+-import org.springframework.core.type.AnnotationMetadata;
+-import org.springframework.core.type.ClassMetadata;
+-import org.springframework.core.type.classreading.MetadataReader;
+-import org.springframework.core.type.classreading.MetadataReaderFactory;
+-import org.springframework.core.type.filter.TypeFilter;
+-
+-import java.io.IOException;
+-
+-/**
+- * @ClassName MistyFileType
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 16:11
+- * @Version 1.0
+- **/
+-public class MistyFilterType implements TypeFilter {
+-    @Override
+-    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+-        //获取当前类的注解源信息
+-        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
+-
+-        //获取当前类的class的源信息
+-        ClassMetadata classMetadata = metadataReader.getClassMetadata();
+-        //获取当前类的资源信息
+-        Resource resource = metadataReader.getResource();
+-        System.out.println("类型路径:"+classMetadata.getClassName());
+-        if(classMetadata.getClassName().contains("dao")){
+-            return true;
+-        }
+-        return false;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/Car.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/Car.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/Car.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/Car.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.beanfactory.compent;
+-
+-/**
+- * @ClassName Car
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:04
+- * @Version 1.0
+- **/
+-public class Car {
+-
+-    public Car() {
+-        System.out.println("Car 构造方法");
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/misty/OrgService.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/OrgService.java b/misty-spring/src/main/java/com/misty/misty/OrgService.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/OrgService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,20 +0,0 @@
+-package com.misty.misty;
+-
+-import com.misty.spring.annotation.Component;
+-import com.misty.spring.annotation.Scope;
+-
+-/**
+- * @ClassName UserService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:11
+- * @Version 1.0
+- **/
+-@Component
+-@Scope
+-public class OrgService  {
+-
+-    public void test(){
+-        System.out.println("OrgServiceTest");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.spring.compentscan;
+-
+-import com.misty.spring.compentscan.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:57
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/concurrent/MistyMain.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/concurrent/MistyMain.java b/spring-annopriciple/src/main/java/com/misty/spring/concurrent/MistyMain.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/concurrent/MistyMain.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,33 +0,0 @@
+-package com.misty.spring.concurrent;
+-
+-import org.springframework.context.annotation.Bean;
+-
+-import java.util.concurrent.CountDownLatch;
+-import java.util.concurrent.ExecutorService;
+-import java.util.concurrent.Executors;
+-
+-/**
+- * @ClassName Misty
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/12/11 14:25
+- * @Version 1.0
+- **/
+-public class MistyMain {
+-
+-    public static void main(String[] args) {
+-        ExecutorService executor = Executors.newCachedThreadPool();
+-
+-        CountDownLatch latch = new CountDownLatch(3);
+-        Worker w1 = new Worker(latch,"mk");
+-        Worker w2 = new Worker(latch,"ls");
+-        Worker w3 = new Worker(latch,"zs");
+-
+-        Boss boss = new Boss(latch,"ks");
+-
+-        executor.execute(w3);
+-        executor.execute(w2);
+-        executor.execute(w1);
+-        executor.execute(boss);
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/misty/OrderService.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/OrderService.java b/misty-spring/src/main/java/com/misty/misty/OrderService.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/OrderService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,31 +0,0 @@
+-package com.misty.misty;
+-
+-import com.misty.spring.annotation.Autowired;
+-import com.misty.spring.annotation.Component;
+-import com.misty.spring.annotation.PostConstruct;
+-import com.misty.spring.annotation.Scope;
+-
+-/**
+- * @ClassName OrderService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 15:01
+- * @Version 1.0
+- **/
+-@Component
+-@Scope
+-public class OrderService implements IOrderInterface {
+-
+-    @Autowired
+-    private UserService userService;
+-
+-    @PostConstruct
+-    public void postConstruct(){
+-        System.out.println("OrderService初始化");
+-    }
+-
+-    @Override
+-    public void test() {
+-        System.out.println("OrderService+"+userService);
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/spring/annotation/PostConstruct.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/annotation/PostConstruct.java b/misty-spring/src/main/java/com/misty/spring/annotation/PostConstruct.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/annotation/PostConstruct.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,20 +0,0 @@
+-package com.misty.spring.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-/**
+- * @ClassName PostConstruct
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:30
+- * @Version 1.0
+- **/
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target(ElementType.METHOD)
+-public @interface PostConstruct {
+-
+-    String value() default "";
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Car.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Car.java b/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Car.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Car.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.beanscope.compent;
+-
+-/**
+- * @ClassName Car
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/27 17:01
+- * @Version 1.0
+- **/
+-public class Car {
+-
+-    public Car() {
+-        System.out.println("car的构造方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyBeanFactoryPostProcessor.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyBeanFactoryPostProcessor.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyBeanFactoryPostProcessor.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyBeanFactoryPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,29 +0,0 @@
+-package com.misty.spring.beanfactorypostprocess;
+-
+-import org.springframework.beans.BeansException;
+-import org.springframework.beans.factory.config.BeanDefinition;
+-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistyBeanFactoryPostProcessor
+- * @Description 创建bean工厂前置拦截器  作用范围   bean定义之后   bean 实例化之前
+- * @Author HeTao
+- * @Date 2020/11/11 16:41
+- * @Version 1.0
+- **/
+-@Component
+-public class MistyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+-    @Override
+-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+-        System.out.println("IOC 容器调用了MistyBeanFactoryPostProcessor的postProcessBeanFactory方法");
+-        for(String name:beanFactory.getBeanDefinitionNames()) {
+-            if("mistyLog".equals(name)) {
+-                BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
+-                beanDefinition.setLazyInit(true);
+-            }
+-
+-        }
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyAspect.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyAspect.java b/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyAspect.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyAspect.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.conditional.compent;
+-
+-/**
+- * @ClassName MistyAspect
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:03
+- * @Version 1.0
+- **/
+-public class MistyAspect {
+-
+-    public MistyAspect(){
+-        System.out.println("MistyAspect的构造方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyaware/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,21 +0,0 @@
+-package com.misty.spring.mistyaware;
+-
+-import com.misty.spring.mistyaware.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 15:52
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/test/TestMistySpring.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/test/TestMistySpring.java b/misty-spring/src/main/java/com/misty/test/TestMistySpring.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/test/TestMistySpring.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,37 +0,0 @@
+-package com.misty.test;
+-
+-import com.misty.misty.AppConfig;
+-import com.misty.misty.IOrderInterface;
+-import com.misty.misty.OrgService;
+-import com.misty.misty.UserService;
+-import com.misty.spring.MistyApplicationContext;
+-
+-/**
+- * @ClassName TestMistySpring
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:00
+- * @Version 1.0
+- **/
+-public class TestMistySpring {
+-
+-    public static void main(String[] args) throws Exception {
+-
+-        //创建非懒加载bean
+-        MistyApplicationContext applicationContext = new MistyApplicationContext(AppConfig.class);
+-//        System.out.println(applicationContext.getBean("userService"));
+-//        System.out.println(applicationContext.getBean("userService"));
+-//        System.out.println(applicationContext.getBean("userService"));
+-//        System.out.println(applicationContext.getBean("orgService"));
+-//        System.out.println(applicationContext.getBean("orgService"));
+-//        System.out.println(applicationContext.getBean("orgService"));
+-//        System.out.println(applicationContext.getBean("orgService"));
+-        UserService userService = (UserService) applicationContext.getBean("userService");
+-        userService.test();
+-        OrgService orgService = (OrgService) applicationContext.getBean("orgService");
+-        orgService.test();
+-        IOrderInterface orderInterface = (IOrderInterface) applicationContext.getBean("orderService");
+-        orderInterface.test();
+-        //测试
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyLog.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyLog.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyLog.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyLog.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,40 +0,0 @@
+-package com.misty.spring.beanfactorypostprocess;
+-
+-import org.springframework.beans.factory.annotation.Value;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistyLog
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:40
+- * @Version 1.0
+- **/
+-@Component
+-public class MistyLog {
+-
+-    @Value("1")
+-    private int flag;
+-
+-    @Override
+-    public String toString() {
+-        return "MistyLog{" +
+-                "flag=" + flag +
+-                '}';
+-    }
+-
+-    public MistyLog() {
+-
+-        System.out.println("我是MistyLog的构造方法");
+-    }
+-
+-
+-
+-    public int getFlag() {
+-        return flag;
+-    }
+-
+-    public void setFlag(int flag) {
+-        this.flag = flag;
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jmm/VolatileDemo.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jmm/VolatileDemo.java b/jvm/src/main/java/com/misty/jmm/VolatileDemo.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jmm/VolatileDemo.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,40 +0,0 @@
+-package com.misty.jmm;
+-
+-/**
+- * @ClassName volatileDemo
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/15 15:27
+- * @Version 1.0
+- **/
+-public class VolatileDemo {
+-
+-    public static volatile boolean flag = false;
+-
+-    public static void main(String[] args) throws InterruptedException {
+-        new Thread(new Runnable() {
+-            @Override
+-            public void run() {
+-                System.out.println("wating data .....");
+-                while (!flag) {
+-                }
+-                System.out.println("============success");
+-            }
+-        }).start();
+-
+-        Thread.sleep(2000);
+-
+-        new Thread(new Runnable() {
+-            @Override
+-            public void run() {
+-                prepareData();
+-            }
+-        }).start();
+-    }
+-
+-    public static void prepareData() {
+-        System.out.println("start deal with data.....");
+-        flag = true;
+-        System.out.println("end deal with data.....");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/CarFactoryBean.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/CarFactoryBean.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/CarFactoryBean.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/compent/CarFactoryBean.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,27 +0,0 @@
+-package com.misty.spring.beanfactory.compent;
+-
+-import org.springframework.beans.factory.FactoryBean;
+-
+-/**
+- * @ClassName CarFactoryBean
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:05
+- * @Version 1.0
+- **/
+-public class CarFactoryBean implements FactoryBean<Car> {
+-    @Override
+-    public Car getObject() throws Exception {
+-        return new Car();
+-    }
+-
+-    @Override
+-    public Class<?> getObjectType() {
+-        return Car.class;
+-    }
+-
+-    @Override
+-    public boolean isSingleton() {
+-        return false;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,47 +0,0 @@
+-package com.misty.spring.compentscan.config;
+-
+-import com.misty.spring.compentscan.filter.MistyFilterType;
+-import com.misty.spring.compentscan.service.impl.MistyServiceImpl;
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.FilterType;
+-import org.springframework.stereotype.Component;
+-import org.springframework.stereotype.Controller;
+-import org.springframework.stereotype.Repository;
+-
+-/**
+- * @ClassName MainConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:40
+- * @Version 1.0
+- **/
+-@Configuration
+-/**
+- * 扫描com.misty.spring.compentscan 该包下以及其子包下带有 @Configuration @Controller @Service @Repository @Component
+- */
+-//@ComponentScan(basePackages = {"com.misty.spring.compentscan"})
+-/**
+- *  excludeFilters 表示需要过滤哪些类不扫描
+- *  @ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class}) 表示带有Controller注解的都不会扫描
+- *  @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,value = {MistyServiceImpl.class}) 指定类不进行扫描
+- */
+-//@ComponentScan(basePackages = {"com.misty.spring.compentscan"},excludeFilters ={
+-//        @ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class}),
+-//        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,value = {MistyServiceImpl.class})
+-//} )
+-/**
+- * includeFilters 表示需要扫描的文件 同时需要将useDefaultFilters 设置为fasle  否则调用默认的过滤器
+- * FilterType.CUSTOM 自定义
+- */
+-//@ComponentScan(basePackages = {"com.misty.spring.compentscan"},includeFilters = {
+-//        @ComponentScan.Filter(type = FilterType.CUSTOM,value = {MistyFilterType.class})
+-//},useDefaultFilters = false)
+-@ComponentScan(basePackages = {"com.misty.spring.compentscan"},excludeFilters = {
+-        //@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class, Service.class}),
+-        @ComponentScan.Filter(type = FilterType.CUSTOM,value = MistyFilterType.class)
+-},includeFilters = {
+-        @ComponentScan.Filter(type = FilterType.ANNOTATION,value = Repository.class)
+-})
+-public class MistyConfig {
+-}
+Index: misty-spring/src/main/java/com/misty/spring/annotation/ComponentScan.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/annotation/ComponentScan.java b/misty-spring/src/main/java/com/misty/spring/annotation/ComponentScan.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/annotation/ComponentScan.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,20 +0,0 @@
+-package com.misty.spring.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-/**
+- * @ClassName ComponentScan
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:39
+- * @Version 1.0
+- **/
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target(ElementType.TYPE)
+-public @interface ComponentScan {
+-
+-    String value() default "";
+-}
+\ No newline at end of file
+Index: misty-spring/src/main/java/com/misty/spring/annotation/Autowired.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/annotation/Autowired.java b/misty-spring/src/main/java/com/misty/spring/annotation/Autowired.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/annotation/Autowired.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,19 +0,0 @@
+-package com.misty.spring.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-/**
+- * @ClassName Autowired
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:02
+- * @Version 1.0
+- **/
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target(ElementType.FIELD)
+-public @interface Autowired {
+-    String value() default "";
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyaware/compent/MistCompent.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/compent/MistCompent.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/compent/MistCompent.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/compent/MistCompent.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,30 +0,0 @@
+-package com.misty.spring.mistyaware.compent;
+-
+-import org.springframework.beans.BeansException;
+-import org.springframework.beans.factory.BeanNameAware;
+-import org.springframework.context.ApplicationContext;
+-import org.springframework.context.ApplicationContextAware;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistCompent
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 15:54
+- * @Version 1.0
+- **/
+-@Component
+-public class MistCompent implements ApplicationContextAware, BeanNameAware {
+-
+-    private ApplicationContext applicationContext;
+-
+-    @Override
+-    public void setBeanName(String name) {
+-        System.out.println("现在bean的名字是:{"+name+"}");
+-    }
+-
+-    @Override
+-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+-        this.applicationContext = applicationContext;
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/classload/TestDynamicLoad.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/classload/TestDynamicLoad.java b/jvm/src/main/java/com/misty/jvm/classload/TestDynamicLoad.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/classload/TestDynamicLoad.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,41 +0,0 @@
+-package com.misty.jvm.classload;
+-
+-/**
+- * @ClassName TestDynamicLoad
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/21 10:42
+- * @Version 1.0
+- **/
+-public class TestDynamicLoad {
+-
+-    static {
+-        System.out.println("*************load TestDynamicLoad************");
+-    }
+-
+-    public static void main(String[] args) {
+-        new A();
+-        System.out.println("*************load test************");
+-        B b = null; //B不会加载 除非这里执行 new  B()
+-    }
+-
+-    static class A {
+-        static {
+-            System.out.println("*************load A************");
+-        }
+-
+-        public A() {
+-            System.out.println("*************initial A************");
+-        }
+-    }
+-
+-    static class B {
+-        static {
+-            System.out.println("*************load B************");
+-        }
+-
+-        public B() {
+-            System.out.println("*************initial B************");
+-        }
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/MistyService.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/MistyService.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/MistyService.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/MistyService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,11 +0,0 @@
+-package com.misty.spring.compentscan.service;
+-
+-/**
+- * @ClassName MistyService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:55
+- * @Version 1.0
+- **/
+-public interface MistyService {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyDao.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyDao.java b/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyDao.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/MistyDao.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,29 +0,0 @@
+-package com.misty.spring.msityautowired.autowired.compent;
+-
+-
+-/**
+- * @ClassName MistyDao
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:52
+- * @Version 1.0
+- **/
+-public class MistyDao {
+-
+-    private int flag=1;
+-
+-    public int getFlag() {
+-        return flag;
+-    }
+-
+-    public void setFlag(int flag) {
+-        this.flag = flag;
+-    }
+-
+-    @Override
+-    public String toString() {
+-        return "MistyDao{" +
+-                "flag=" + flag +
+-                '}';
+-    }
+-}
+Index: spring-annopriciple/build.gradle
+===================================================================
+diff --git a/spring-annopriciple/build.gradle b/spring-annopriciple/build.gradle
+deleted file mode 100644
+--- a/spring-annopriciple/build.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,17 +0,0 @@
+-plugins {
+-    id 'java'
+-}
+-
+-group 'com.misty'
+-version '1.0-SNAPSHOT'
+-
+-repositories {
+-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+-    //mavenCentral()
+-}
+-
+-dependencies {
+-    testCompile group: 'junit', name: 'junit', version: '4.12'
+-
+-    compile group: 'org.springframework', name: 'spring-context',version: '4.3.20.RELEASE'
+-}
+Index: jvm/src/main/java/com/misty/jvm/classload/Math.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/classload/Math.java b/jvm/src/main/java/com/misty/jvm/classload/Math.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/classload/Math.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,28 +0,0 @@
+-package com.misty.jvm.classload;
+-
+-/**
+- * @ClassName Math
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/21 9:56
+- * @Version 1.0
+- **/
+-public class Math {
+-
+-    public static final int initData = 666;
+-
+-    public static User user = new User();
+-
+-    public static void main(String[] args) {
+-        Math math = new Math();
+-        math.compute();
+-    }
+-
+-    public int compute() {
+-        //一个方法对应一块内存区域
+-        int a = 1;
+-        int b = 2;
+-        int c = (a+b)*10;
+-        return c;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/conditional/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/conditional/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/conditional/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/conditional/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,24 +0,0 @@
+-package com.misty.spring.conditional;
+-import com.misty.spring.conditional.compent.MistyLog;
+-import com.misty.spring.conditional.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:57
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-        MistyLog bean = ac.getBean(MistyLog.class);
+-        System.out.println(bean);
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyLog.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyLog.java b/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyLog.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyLog.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,39 +0,0 @@
+-package com.misty.spring.mistybfrpostprocessor;
+-
+-import org.springframework.beans.factory.annotation.Value;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistyLog
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:40
+- * @Version 1.0
+- **/
+-public class MistyLog {
+-
+-    @Value("1")
+-    private int flag;
+-
+-    @Override
+-    public String toString() {
+-        return "MistyLog{" +
+-                "flag=" + flag +
+-                '}';
+-    }
+-
+-    public MistyLog() {
+-
+-        System.out.println("我是MistyLog的构造方法");
+-    }
+-
+-
+-
+-    public int getFlag() {
+-        return flag;
+-    }
+-
+-    public void setFlag(int flag) {
+-        this.flag = flag;
+-    }
+-}
+Index: jvm/build.gradle
+===================================================================
+diff --git a/jvm/build.gradle b/jvm/build.gradle
+deleted file mode 100644
+--- a/jvm/build.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-plugins {
+-    id 'java'
+-}
+-
+-group 'com.misty'
+-version '1.0-SNAPSHOT'
+-
+-repositories {
+-    mavenCentral()
+-}
+-
+-dependencies {
+-    testCompile group: 'junit', name: 'junit', version: '4.12'
+-    compile group: 'org.openjdk.jol',name: 'jol-core',version: '0.9'
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Cat.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Cat.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Cat.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Cat.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.spring.importmethod.compent;
+-
+-/**
+- * @ClassName Cat
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:34
+- * @Version 1.0
+- **/
+-public class Cat {
+-    public Cat() {
+-        System.out.println("Cat构造方法");
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/misty/UserService.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/UserService.java b/misty-spring/src/main/java/com/misty/misty/UserService.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/UserService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,48 +0,0 @@
+-package com.misty.misty;
+-
+-import com.misty.spring.BeanNameAware;
+-import com.misty.spring.InitializingBean;
+-import com.misty.spring.annotation.*;
+-
+-/**
+- * @ClassName UserService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:11
+- * @Version 1.0
+- **/
+-@Component
+-@Scope("singleton")
+-public class UserService implements InitializingBean, BeanNameAware {
+-
+-    @Autowired
+-    private OrgService orgService;
+-
+-    @MistyValue("既许一人以偏爱，愿尽余生以慷慨")
+-    private String mistValue;
+-
+-    private String beanName;
+-
+-    @PostConstruct
+-    public void postConstruct(){
+-        System.out.println("userService初始化");
+-    }
+-
+-    public void test(){
+-        System.out.println(orgService);
+-        System.out.println("test");
+-        System.out.println(mistValue);
+-        System.out.println("beanName:"+beanName);
+-    }
+-
+-    @Override
+-    public void afterPropertiesSet() throws Exception {
+-        System.out.println("初始化");
+-    }
+-
+-    @Override
+-    public void setBeanName(String name) {
+-        beanName = name;
+-    }
+-    //123234
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.spring.importmethod.config;
+-
+-import com.misty.spring.importmethod.compent.Car;
+-import com.misty.spring.importmethod.compent.Person;
+-import com.misty.spring.importmethod.importselect.MistyBeanDefinitionRegister;
+-import com.misty.spring.importmethod.importselect.MistyImportSelector;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.Import;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:59
+- * @Version 1.0
+- **/
+-@Configuration
+-//@Import(value = {Person.class, Car.class})
+-//@Import(value = {Person.class, Car.class, MistyImportSelector.class})
+-@Import(value = {Person.class, Car.class, MistyImportSelector.class, MistyBeanDefinitionRegister.class})
+-public class MistyConfig {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/postprocess/filter/MistyBeanPostProcessor.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/filter/MistyBeanPostProcessor.java b/spring-annopriciple/src/main/java/com/misty/spring/postprocess/filter/MistyBeanPostProcessor.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/filter/MistyBeanPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,58 +0,0 @@
+-package com.misty.spring.postprocess.filter;
+-
+-import org.springframework.beans.BeansException;
+-import org.springframework.beans.PropertyValues;
+-import org.springframework.beans.factory.config.BeanPostProcessor;
+-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
+-import org.springframework.stereotype.Component;
+-
+-import java.beans.PropertyDescriptor;
+-
+-/**
+- * @ClassName MistyBeanPostProcessor
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:40
+- * @Version 1.0
+- **/
+-@Component
+-public class MistyBeanPostProcessor implements BeanPostProcessor, InstantiationAwareBeanPostProcessor {
+-    @Override
+-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+-        System.out.println("MistyBeanPostProcessor...postProcessBeforeInitialization:"+beanName);
+-        if (beanName.equals("compent")) {
+-            System.out.println(beanName+"的后置处理器的before");
+-        }
+-        return bean;
+-    }
+-
+-    @Override
+-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+-        System.out.println("MistyBeanPostProcessor...postProcessAfterInitialization:"+beanName);
+-        if (beanName.equals("compent")) {
+-            System.out.println(beanName+"的后置处理器的after");
+-        }
+-        return bean;
+-    }
+-
+-    @Override
+-    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+-        if(beanName.equals("compent")){
+-            System.out.println(beanName+"实例化之前");
+-        }
+-        return null;
+-    }
+-
+-    @Override
+-    public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+-        if(beanName.equals("compent")){
+-            System.out.println(beanName+"实例化之后");
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
+-        return pvs;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Zoo.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Zoo.java b/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Zoo.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Zoo.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.beanscope.compent;
+-
+-/**
+- * @ClassName Zoo
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/27 17:08
+- * @Version 1.0
+- **/
+-public class Zoo {
+-
+-    public Zoo() {
+-        System.out.println("zoo的构造方法");
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/AllotOnStack.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/AllotOnStack.java b/jvm/src/main/java/com/misty/jvm/AllotOnStack.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/AllotOnStack.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,39 +0,0 @@
+-package com.misty.jvm;
+-
+-/**
+- * @ClassName AllotOnStack
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/5/19 14:53
+- * @Version 1.0
+- **/
+-
+-import com.misty.jvm.classload.User;
+-
+-/**
+- * 栈上分配，标量替换
+- * 代码调用了1亿次alloc()，如果是分配到堆上，大概需要1GB以上堆空间，如果堆空间小于该值，必然会触发GC。
+- *
+- * 使用如下参数不会发生GC
+- * -Xmx15m -Xms15m -XX:+DoEscapeAnalysis -XX:+PrintGC -XX:+EliminateAllocations
+- * 使用如下参数都会发生大量GC
+- * -Xmx15m -Xms15m -XX:-DoEscapeAnalysis -XX:+PrintGC -XX:+EliminateAllocations
+- * -Xmx15m -Xms15m -XX:+DoEscapeAnalysis -XX:+PrintGC -XX:-EliminateAllocations
+- */
+-public class AllotOnStack {
+-
+-    public static void main(String[] args) {
+-        long start = System.currentTimeMillis();
+-        for (int i = 0; i < 100000000; i++) {
+-            alloc();
+-        }
+-        long end = System.currentTimeMillis();
+-        System.out.println(end - start);
+-    }
+-
+-    private static void alloc() {
+-        User user = new User();
+-        user.setUid(1);
+-        user.setName("zhuge");
+-    }
+-}
+Index: settings.gradle
+===================================================================
+diff --git a/settings.gradle b/settings.gradle
+deleted file mode 100644
+--- a/settings.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,6 +0,0 @@
+-rootProject.name = 'spring-framework'
+-include 'spring-annopriciple'
+-include 'jvm'
+-include 'misty-spring'
+-include 'application-spring'
+-
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/compent/Car.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Car.java b/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Car.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Car.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,23 +0,0 @@
+-package com.misty.spring.init.compent;
+-
+-/**
+- * @ClassName Car
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:25
+- * @Version 1.0
+- **/
+-public class Car {
+-
+-    public Car() {
+-        System.out.println("Car构造方法");
+-    }
+-
+-    public void initMethod(){
+-        System.out.println("Car初始化方法");
+-    }
+-
+-    public void destory(){
+-        System.out.println("Car销毁方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/controller/MistyController.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/controller/MistyController.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/controller/MistyController.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/controller/MistyController.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.spring.compentscan.controller;
+-
+-import org.springframework.stereotype.Controller;
+-
+-/**
+- * @ClassName MistyController
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:53
+- * @Version 1.0
+- **/
+-@Controller
+-public class MistyController {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/compent/Person.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Person.java b/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Person.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Person.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,29 +0,0 @@
+-package com.misty.spring.init.compent;
+-
+-import javax.annotation.PostConstruct;
+-import javax.annotation.PreDestroy;
+-
+-/**
+- * @ClassName Person
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:21
+- * @Version 1.0
+- **/
+-public class Person   {
+-
+-    public Person() {
+-        System.out.println("Person构造方法");
+-    }
+-
+-    @PostConstruct
+-    public void initMethod(){
+-        System.out.println("Person初始化方法");
+-    }
+-
+-    @PreDestroy
+-    public void destory(){
+-        System.out.println("Person销毁方法");
+-    }
+-
+-}
+Index: misty-spring/src/main/java/com/misty/spring/annotation/Scope.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/annotation/Scope.java b/misty-spring/src/main/java/com/misty/spring/annotation/Scope.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/annotation/Scope.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,20 +0,0 @@
+-package com.misty.spring.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-/**
+- * @ClassName Component
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:36
+- * @Version 1.0
+- **/
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target(ElementType.TYPE)
+-public @interface Scope {
+-
+-    String value() default "";
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyBeanDefinationRegisterPostProcessor.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyBeanDefinationRegisterPostProcessor.java b/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyBeanDefinationRegisterPostProcessor.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyBeanDefinationRegisterPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,32 +0,0 @@
+-package com.misty.spring.mistybfrpostprocessor;
+-
+-import org.springframework.beans.BeansException;
+-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+-import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
+-import org.springframework.beans.factory.support.RootBeanDefinition;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistyBeanDefinationRegisterPostProcessor
+- * @Description 创建BeanDefinationRegisterPostProcessor前置拦截器  作用范围  在自定义bean定义加载到spring 容器之前
+- * @Author HeTao
+- * @Date 2020/11/11 16:54
+- * @Version 1.0
+- **/
+-@Component
+-public class MistyBeanDefinationRegisterPostProcessor implements BeanDefinitionRegistryPostProcessor {
+-    @Override
+-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+-        System.out.println("MistyBeanDefinationRegisterPostProcessor的postProcessBeanDefinitionRegistry方法");
+-        System.out.println("bean定义的数据量:"+registry.getBeanDefinitionCount());
+-        RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(MistyLog.class);
+-        registry.registerBeanDefinition("mistyLog",rootBeanDefinition);
+-    }
+-
+-    @Override
+-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+-        System.out.println("MistyBeanDefinationRegisterPostProcessor的postProcessBeanFactory方法");
+-        System.out.println("bean定义的数据量:"+beanFactory.getBeanDefinitionCount());
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/conditional/condition/MistyCondition.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/conditional/condition/MistyCondition.java b/spring-annopriciple/src/main/java/com/misty/spring/conditional/condition/MistyCondition.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/conditional/condition/MistyCondition.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,23 +0,0 @@
+-package com.misty.spring.conditional.condition;
+-
+-import org.springframework.context.annotation.Condition;
+-import org.springframework.context.annotation.ConditionContext;
+-import org.springframework.core.type.AnnotatedTypeMetadata;
+-
+-/**
+- * @ClassName MistyCondition
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:06
+- * @Version 1.0
+- **/
+-public class MistyCondition implements Condition {
+-    @Override
+-    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+-        //判断容器中是否包含某个bean
+-        if (context.getBeanFactory().containsBean("mistyAspect")) {
+-            return true;
+-        }
+-        return false;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/listener/MistConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/listener/MistConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/listener/MistConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/listener/MistConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.listener;
+-
+-
+-import org.springframework.context.annotation.ComponentScan;
+-
+-/**
+- * @ClassName MistConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:28
+- * @Version 1.0
+- **/
+-@ComponentScan(basePackages = {"com.misty.spring.listener"})
+-public class MistConfig {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/compent/MistyBeanPostProcessor.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/MistyBeanPostProcessor.java b/spring-annopriciple/src/main/java/com/misty/spring/init/compent/MistyBeanPostProcessor.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/MistyBeanPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,27 +0,0 @@
+-package com.misty.spring.init.compent;
+-
+-import org.springframework.beans.BeansException;
+-import org.springframework.beans.factory.config.BeanPostProcessor;
+-import org.springframework.stereotype.Component;
+-
+-/**
+- * @ClassName MistyBeanPostProcessor
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/8 15:35
+- * @Version 1.0
+- **/
+-@Component
+-public class MistyBeanPostProcessor implements BeanPostProcessor {
+-    @Override
+-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+-        System.out.println("MistyBeanPostProcessor...postProcessBeforeInitialization:"+beanName);
+-        return bean;
+-    }
+-
+-    @Override
+-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+-        System.out.println("MistyBeanPostProcessor...postProcessAfterInitialization:"+beanName);
+-        return bean;
+-    }
+-}
+Index: spring-annopriciple/src/main/resources/beans.xml
+===================================================================
+diff --git a/spring-annopriciple/src/main/resources/beans.xml b/spring-annopriciple/src/main/resources/beans.xml
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/resources/beans.xml	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<beans xmlns="http://www.springframework.org/schema/beans"
+-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+-
+-    <bean id="car" class="com.misty.spring.beanfactory.compent.Car"></bean>
+-
+-<!--    <bean id="driverFactoryBean" class="com.misty.spring.beanfactory.compent.DriverFactoryBean">-->
+-<!--        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/misty"></property>-->
+-<!--    </bean>-->
+-
+-</beans>
+\ No newline at end of file
+Index: misty-spring/src/main/java/com/misty/spring/annotation/Component.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/annotation/Component.java b/misty-spring/src/main/java/com/misty/spring/annotation/Component.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/annotation/Component.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,20 +0,0 @@
+-package com.misty.spring.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-/**
+- * @ClassName Component
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:36
+- * @Version 1.0
+- **/
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target(ElementType.TYPE)
+-public @interface Component {
+-
+-    String value() default "";
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/postprocess/compent/Compent.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/compent/Compent.java b/spring-annopriciple/src/main/java/com/misty/spring/postprocess/compent/Compent.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/compent/Compent.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,18 +0,0 @@
+-package com.misty.spring.postprocess.compent;
+-
+-/**
+- * @ClassName Compent
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:49
+- * @Version 1.0
+- **/
+-public class Compent {
+-    public void init(){
+-        System.out.println("Compent的初始化方法");
+-    }
+-
+-    public Compent() {
+-        System.out.println("Compent的构造方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistybfrpostprocessor/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,16 +0,0 @@
+-package com.misty.spring.mistybfrpostprocessor;
+-
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:51
+- * @Version 1.0
+- **/
+-@Configuration
+-@ComponentScan(basePackages = "com.misty.spring.mistybfrpostprocessor")
+-public class MistyConfig {
+-}
+Index: build.gradle
+===================================================================
+diff --git a/build.gradle b/build.gradle
+deleted file mode 100644
+--- a/build.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-plugins {
+-    id 'java'
+-}
+-
+-group 'com.misty'
+-version '1.0-SNAPSHOT'
+-
+-repositories {
+-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+-    //mavenCentral()
+-}
+-
+-dependencies {
+-    testCompile group: 'junit', name: 'junit', version: '4.12'
+-}
+Index: misty-spring/src/main/java/com/misty/misty/AppConfig.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/AppConfig.java b/misty-spring/src/main/java/com/misty/misty/AppConfig.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/AppConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.misty;
+-
+-import com.misty.spring.annotation.ComponentScan;
+-
+-/**
+- * @ClassName AppConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:01
+- * @Version 1.0
+- **/
+-@ComponentScan("com.misty.misty")
+-public class AppConfig {
+-}
+Index: misty-spring/src/main/java/com/misty/misty/MistValueBeanPostProcessor.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/misty/MistValueBeanPostProcessor.java b/misty-spring/src/main/java/com/misty/misty/MistValueBeanPostProcessor.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/misty/MistValueBeanPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,32 +0,0 @@
+-package com.misty.misty;
+-
+-import com.misty.spring.BeanPostProcessor;
+-import com.misty.spring.annotation.Component;
+-import com.misty.spring.annotation.MistyValue;
+-
+-import java.lang.reflect.Field;
+-
+-/**
+- * @ClassName MistBean
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:36
+- * @Version 1.0
+- **/
+-@Component
+-public class MistValueBeanPostProcessor implements BeanPostProcessor {
+-
+-    @Override
+-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws Exception {
+-        //System.out.println("初始化的："+beanName);
+-        Class<?> clazz = bean.getClass();
+-        for (Field field : clazz.getDeclaredFields()) {
+-            if(field.isAnnotationPresent(MistyValue.class)){
+-                field.setAccessible(true);
+-                MistyValue mistyValueAnnotation = field.getAnnotation(MistyValue.class);
+-                field.set(bean,mistyValueAnnotation.value());
+-            }
+-        }
+-        return bean;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/compent/Cat.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Cat.java b/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Cat.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Cat.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,28 +0,0 @@
+-package com.misty.spring.init.compent;
+-
+-import org.springframework.beans.factory.DisposableBean;
+-import org.springframework.beans.factory.InitializingBean;
+-
+-/**
+- * @ClassName Cat
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:34
+- * @Version 1.0
+- **/
+-public class Cat implements InitializingBean, DisposableBean {
+-
+-    public Cat() {
+-        System.out.println("Cat构造方法");
+-    }
+-
+-    @Override
+-    public void destroy() throws Exception {
+-        System.out.println("DisposableBean的destroy()方法 ");
+-    }
+-
+-    @Override
+-    public void afterPropertiesSet() throws Exception {
+-        System.out.println("InitializingBean的 afterPropertiesSet方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactory/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,32 +0,0 @@
+-package com.misty.spring.beanfactory;
+-
+-import com.misty.spring.beanfactory.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:15
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-    public static void main(String[] args) throws Exception {
+-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        Object bean = ctx.getBean("carFactoryBean");
+-        System.out.println(bean);
+-        Object bean2 = ctx.getBean("&carFactoryBean");
+-        System.out.println(bean2);
+-        Object ctxBean = ctx.getBean("carFactoryBean");
+-        System.out.println(bean==ctxBean);
+-
+-        //System.out.println(ctx.getBean("driverFactoryBean"));
+-/*        Object bean2 = ctx.getBean("&carFactoryBean");
+-        Object bean3 = ctx.getBean("carFactoryBean");
+-        CarFactoryBean carFactoryBean = ctx.getBean(CarFactoryBean.class);
+-        System.out.println(bean.getClass());
+-        System.out.println(bean2.getClass());
+-        System.out.println(bean==bean3);*/
+-
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/impl/MistyServiceImpl.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/impl/MistyServiceImpl.java b/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/impl/MistyServiceImpl.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/compentscan/service/impl/MistyServiceImpl.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.compentscan.service.impl;
+-
+-import com.misty.spring.compentscan.service.MistyService;
+-import org.springframework.stereotype.Service;
+-
+-/**
+- * @ClassName MistyService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:55
+- * @Version 1.0
+- **/
+-@Service
+-public class MistyServiceImpl implements MistyService {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/conditional/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/conditional/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/conditional/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/conditional/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,33 +0,0 @@
+-package com.misty.spring.conditional.config;
+-
+-
+-import com.misty.spring.conditional.compent.MistyAspect;
+-import com.misty.spring.conditional.compent.MistyLog;
+-import com.misty.spring.conditional.condition.MistyCondition;
+-import org.springframework.context.annotation.*;
+-
+-/**
+- * @ClassName MainConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/27 16:59
+- * @Version 1.0
+- **/
+-@Configuration
+-public class MistyConfig {
+-
+-    @Bean
+-    public MistyAspect mistyAspect(){
+-        return new MistyAspect();
+-    }
+-
+-    /**
+-     * 当容器中有mistyAspect组件时，mistyLog才会被实例化
+-     * @return
+-     */
+-    @Bean
+-    @Conditional(value = MistyCondition.class)
+-    public MistyLog mistyLog(){
+-        return new MistyLog();
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Person.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Person.java b/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Person.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/compent/Person.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.beanscope.compent;
+-
+-/**
+- * @ClassName Person
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/27 17:01
+- * @Version 1.0
+- **/
+-public class Person {
+-
+-    public Person() {
+-        System.out.println("Person的构造方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyController.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyController.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyController.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyController.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.spring.mistyspringstarter;
+-
+-import org.springframework.stereotype.Controller;
+-
+-/**
+- * @ClassName MistyController
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/12 15:14
+- * @Version 1.0
+- **/
+-@Controller
+-public class MistyController {
+-}
+Index: jvm/src/main/java/com/misty/jvm/GCTest.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/GCTest.java b/jvm/src/main/java/com/misty/jvm/GCTest.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/GCTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.jvm;
+-
+-/**
+- * @ClassName GCTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/5/19 15:09
+- * @Version 1.0
+- **/
+-public class GCTest {
+-    public static void main(String[] args) {
+-        byte[] allocation1, allocation2/*, allocation3, allocation4, allocation5, allocation6*/;
+-       // allocation1 = new byte[58000*1024];
+-
+-        allocation2 = new byte[8000*1024];
+-
+-      /*allocation3 = new byte[1000*1024];
+-     allocation4 = new byte[1000*1024];
+-     allocation5 = new byte[1000*1024];
+-     allocation6 = new byte[1000*1024];*/
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactory/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactory/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.spring.beanfactory.config;
+-
+-import com.misty.spring.beanfactory.compent.CarFactoryBean;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.ImportResource;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:12
+- * @Version 1.0
+- **/
+-@Configuration
+-@ImportResource(locations = {"classpath:beans.xml"})
+-public class MistyConfig {
+-    @Bean
+-    public CarFactoryBean carFactoryBean(){
+-        return new CarFactoryBean();
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyImportSelector.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyImportSelector.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyImportSelector.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyImportSelector.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,18 +0,0 @@
+-package com.misty.spring.importmethod.importselect;
+-
+-import org.springframework.context.annotation.ImportSelector;
+-import org.springframework.core.type.AnnotationMetadata;
+-
+-/**
+- * @ClassName MistyImportSelector
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:55
+- * @Version 1.0
+- **/
+-public class MistyImportSelector implements ImportSelector {
+-    @Override
+-    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+-        return new String[]{"com.misty.spring.importmethod.compent.Dog"};
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/postprocess/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/postprocess/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/postprocess/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.spring.postprocess;
+-
+-import com.misty.spring.postprocess.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:15
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-    public static void main(String[] args) throws Exception {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-        ac.close();
+-    }
+-}
+Index: README.MD
+===================================================================
+diff --git a/README.MD b/README.MD
+deleted file mode 100644
+--- a/README.MD	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,3 +0,0 @@
+-spring 源码学习  
+-    gradle 版本 4.6 
+-   
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/init/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.spring.init;
+-
+-import com.misty.spring.init.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 10:15
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-    public static void main(String[] args) throws Exception {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-        ac.close();
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/listener/MistyMain.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyMain.java b/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyMain.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/listener/MistyMain.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,24 +0,0 @@
+-package com.misty.spring.listener;
+-
+-import org.springframework.context.ApplicationEvent;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyMain
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:32
+- * @Version 1.0
+- **/
+-public class MistyMain {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistConfig.class);
+-        ac.publishEvent(new ApplicationEvent("手动发布一个事件") {
+-            @Override
+-            public Object getSource() {
+-                return super.getSource();
+-            }
+-        });
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyMain.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyMain.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyMain.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyMain.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,18 +0,0 @@
+-package com.misty.spring.beanfactorypostprocess;
+-
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyMain
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:40
+- * @Version 1.0
+- **/
+-public class MistyMain {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        //System.out.println(ac.getBean(MistyLog.class));
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/init/compent/Book.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Book.java b/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Book.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/init/compent/Book.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,31 +0,0 @@
+-package com.misty.spring.init.compent;
+-
+-import org.springframework.stereotype.Component;
+-
+-import javax.annotation.PostConstruct;
+-import javax.annotation.PreDestroy;
+-
+-/**
+- * @ClassName Book
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/8 15:25
+- * @Version 1.0
+- **/
+-@Component
+-public class Book {
+-
+-    public Book() {
+-        System.out.println("book 的构造方法");
+-    }
+-
+-    @PostConstruct
+-    public void init(){
+-        System.out.println("book 的PostConstruct标志初始化方法");
+-    }
+-
+-    @PreDestroy
+-    public void destory(){
+-        System.out.println("booK 的PreDestroy标注销毁方法");
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/spring/InitializingBean.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/InitializingBean.java b/misty-spring/src/main/java/com/misty/spring/InitializingBean.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/InitializingBean.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,13 +0,0 @@
+-package com.misty.spring;
+-
+-/**
+- * @ClassName InitializingBean
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:25
+- * @Version 1.0
+- **/
+-public interface InitializingBean {
+-
+-    void afterPropertiesSet() throws Exception;
+-}
+Index: spring-annopriciple/src/main/resources/ds.properties
+===================================================================
+diff --git a/spring-annopriciple/src/main/resources/ds.properties b/spring-annopriciple/src/main/resources/ds.properties
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/resources/ds.properties	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,4 +0,0 @@
+-ds.username=root
+-ds.password=123456
+-ds.jdbcUrl=jdbc:mysql://localhost:3306/misty
+-ds.classDriver=com.mysql.jdbc.Driver
+\ No newline at end of file
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanscope/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/beanscope/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,37 +0,0 @@
+-package com.misty.spring.beanscope.config;
+-
+-import com.misty.spring.beanscope.compent.Car;
+-import com.misty.spring.beanscope.compent.Person;
+-import com.misty.spring.beanscope.compent.Zoo;
+-import org.springframework.context.annotation.*;
+-
+-/**
+- * @ClassName MainConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/27 16:59
+- * @Version 1.0
+- **/
+-@Configuration
+-public class MistyConfig {
+-
+-    @Bean
+-    public Person person(){
+-        System.out.println("默认的单例模式 饿汉式加载");
+-        return new Person();
+-    }
+-
+-    @Bean
+-    @Scope(scopeName = "prototype")
+-    public Car car(){
+-        System.out.println("多例模式  懒汉式加载 调用时才会创建对象 不被三级缓存管理");
+-        return new Car();
+-    }
+-
+-    @Bean
+-    @Lazy
+-    public Zoo zoo(){
+-        System.out.println("懒加载模式");
+-        return new Zoo();
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyMain.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyMain.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyMain.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyMain.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,19 +0,0 @@
+-package com.misty.spring.mistyspringstarter;
+-
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyMain
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/12 15:13
+- * @Version 1.0
+- **/
+-public class MistyMain {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        System.out.println(ac.getBean("mistyDao"));
+-        System.out.println(ac);
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,30 +0,0 @@
+-package com.misty.spring.msityautowired.autowired;
+-
+-import com.misty.spring.msityautowired.autowired.compent.BaiDuService;
+-import com.misty.spring.msityautowired.autowired.compent.MistyService;
+-import com.misty.spring.msityautowired.autowired.config.MistyConfig;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 15:29
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        MistyService mistyService = ctx.getBean(MistyService.class);
+-        System.out.println(mistyService.toString());
+-
+-        Object tulingDao = ctx.getBean("mistyDao2");
+-        System.out.println(tulingDao.toString());
+-
+-        //测试@AutoWired使用的时byName还是byType(默认是使用byType,当发现多个类型的bean话 就通过byName)
+-        //需要指定装配的名称通过@Qualifier指定名称装配
+-        BaiDuService baiDuService = ctx.getBean(BaiDuService.class);
+-        System.out.println(baiDuService);
+-    }
+-
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanscope/MistyTest.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/MistyTest.java b/spring-annopriciple/src/main/java/com/misty/spring/beanscope/MistyTest.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanscope/MistyTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,39 +0,0 @@
+-package com.misty.spring.beanscope;
+-
+-import com.misty.spring.beanscope.config.MistyConfig;
+-import com.misty.spring.beanscope.compent.Car;
+-import com.misty.spring.beanscope.compent.Person;
+-import com.misty.spring.beanscope.compent.Zoo;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-
+-/**
+- * @ClassName MistyTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/16 15:57
+- * @Version 1.0
+- **/
+-public class MistyTest {
+-
+-    public static void main(String[] args) {
+-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MistyConfig.class);
+-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+-        for (String beanDefinitionName : beanDefinitionNames) {
+-            System.out.println("beanName为："+beanDefinitionName);
+-        }
+-        Person person = ac.getBean(Person.class);
+-        Person person1 = ac.getBean(Person.class);
+-        System.out.println(person==person1);
+-
+-        System.out.println("---------------------------------");
+-
+-        Car car = ac.getBean(Car.class);
+-        Car car1 = ac.getBean(Car.class);
+-        System.out.println(car==car1);
+-
+-        System.out.println("=================================");
+-
+-        Zoo zoo = ac.getBean(Zoo.class);
+-        System.out.println(zoo);
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/OOMTest.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/OOMTest.java b/jvm/src/main/java/com/misty/jvm/OOMTest.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/OOMTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,26 +0,0 @@
+-package com.misty.jvm;
+-
+-import com.misty.jvm.classload.User;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.UUID;
+-
+-/**
+- * @ClassName OOMTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/5/19 15:20
+- * @Version 1.0
+- **/
+-public class OOMTest {
+-    public static void main(String[] args) {
+-        List<Object> list = new ArrayList<>();
+-        int i = 0;
+-        int j = 0;
+-        while (true) {
+-            list.add(new User(i++, UUID.randomUUID().toString()));
+-            new User(j--, UUID.randomUUID().toString());
+-        }
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyaware/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyaware/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,16 +0,0 @@
+-package com.misty.spring.mistyaware.config;
+-
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 15:52
+- * @Version 1.0
+- **/
+-@Configuration
+-@ComponentScan(basePackages = "com.misty.spring.mistyaware")
+-public class MistyConfig {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyDao.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyDao.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyDao.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyDao.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,11 +0,0 @@
+-package com.misty.spring.mistyspringstarter;
+-
+-/**
+- * @ClassName MistyDao
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/12 15:14
+- * @Version 1.0
+- **/
+-public class MistyDao {
+-}
+Index: misty-spring/src/main/java/com/misty/spring/MistyApplicationContext.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/MistyApplicationContext.java b/misty-spring/src/main/java/com/misty/spring/MistyApplicationContext.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/MistyApplicationContext.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,192 +0,0 @@
+-package com.misty.spring;
+-
+-import com.misty.spring.annotation.*;
+-
+-import java.beans.Introspector;
+-import java.io.File;
+-import java.lang.reflect.Field;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-import java.net.URL;
+-import java.util.ArrayList;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Map;
+-
+-/**
+- * @ClassName MistyApplicationContext
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:03
+- * @Version 1.0
+- **/
+-public class MistyApplicationContext {
+-
+-    private Class configClass;
+-
+-    private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
+-
+-    //单列池
+-    private Map<String,Object> singletonObjects = new HashMap<>();
+-
+-    private List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
+-
+-    public MistyApplicationContext(Class configClass) {
+-        this.configClass = configClass;
+-        //扫描bean
+-        scan(configClass);
+-        //创建bean
+-        for (Map.Entry<String, BeanDefinition> entry : beanDefinitionMap.entrySet()) {
+-            String beanName = entry.getKey();
+-            BeanDefinition beanDefinition = entry.getValue();
+-            if(beanDefinition.getScope().equals("singleton")){
+-                Object bean = singletonObjects.get(beanName);
+-                if(bean == null){
+-                    bean  = createBean(beanName,beanDefinition);
+-                    singletonObjects.put(beanName,bean);
+-                }
+-            }
+-        }
+-    }
+-
+-    //创建bean
+-    private Object createBean(String beanName, BeanDefinition beanDefinition) {
+-        Class clazz = beanDefinition.getType();
+-        Object bean = null;
+-        try {
+-            //todo 如果该类存在多个有参构造函数如何实现 目前实现无参构造
+-            bean = clazz.getConstructor().newInstance();
+-
+-            //依赖注入
+-            for (Field field : clazz.getDeclaredFields()) {
+-                field.setAccessible(true);
+-                if(field.isAnnotationPresent(Autowired.class)){
+-                    //todo  真正的依赖注入  先通过 byType，然后通过byName 找到对应的bean
+-                    field.set(bean,getBean(field.getName()));
+-                }
+-            }
+-
+-            //Aware
+-            //初始化
+-            if (bean instanceof BeanNameAware) {
+-                ((BeanNameAware) bean).setBeanName(beanName);
+-            }
+-
+-            //初始化前
+-            for (Method method : clazz.getDeclaredMethods()) {
+-                //todo 实现 @PostConstruct
+-                if(method.isAnnotationPresent(PostConstruct.class)){
+-                    method.invoke(bean,null);
+-                }
+-            }
+-
+-            //初始化前
+-            for (BeanPostProcessor beanPostProcessor : beanPostProcessors) {
+-                bean  = beanPostProcessor.postProcessBeforeInitialization(bean,beanName);
+-            }
+-
+-            //初始化
+-            if (bean instanceof InitializingBean) {
+-                ((InitializingBean) bean).afterPropertiesSet();
+-            }
+-
+-            //初始化后 可实现Aop
+-            for (BeanPostProcessor beanPostProcessor : beanPostProcessors) {
+-                bean  = beanPostProcessor.postProcessAfterInitialization(bean,beanName);
+-            }
+-        } catch (InstantiationException e) {
+-            e.printStackTrace();
+-        } catch (IllegalAccessException e) {
+-            e.printStackTrace();
+-        } catch (InvocationTargetException e) {
+-            e.printStackTrace();
+-        } catch (NoSuchMethodException e) {
+-            e.printStackTrace();
+-        } catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-        return bean;
+-    }
+-
+-    //扫描
+-    private void scan(Class configClass) {
+-        //扫描 判断是否是扫描配置类
+-        if(configClass.isAnnotationPresent(ComponentScan.class)){
+-            ComponentScan componentScanAnnotation = (ComponentScan) configClass.getAnnotation(ComponentScan.class);
+-            String path = componentScanAnnotation.value();
+-            path = path.replace(".","/");
+-            //利用application类加载器 获取target的绝对路径
+-            ClassLoader classLoader = MistyApplicationContext.class.getClassLoader();
+-            URL resource = classLoader.getResource(path);
+-            File file = new File(resource.getFile());
+-            if(file.isDirectory()){
+-                //遍历扫描路径下的文件 todo 如果 扫描路径下存在文件夹 该如何解决
+-                for (File f : file.listFiles()) {
+-                    String absolutePath = f.getAbsolutePath();
+-                    //判断扫描到的文件是否包含Component 注解
+-                    //加载文件 path com.demo.UserService
+-                    String classPath = absolutePath.substring(absolutePath.indexOf("com"), absolutePath.indexOf(".class")).replace("\\", ".");
+-                    //处理路径s
+-                    try {
+-                        Class<?> clazz = classLoader.loadClass(classPath);
+-                        if(clazz.isAnnotationPresent(Component.class)){
+-                            //判断类是否实现 BeanPostProcessor
+-                            if(BeanPostProcessor.class.isAssignableFrom(clazz)){
+-                                BeanPostProcessor beanPostProcessor = (BeanPostProcessor) clazz.getConstructor().newInstance();
+-                                beanPostProcessors.add(beanPostProcessor);
+-                            }else {
+-                                Component componentAnnotation = clazz.getAnnotation(Component.class);
+-                                String beanName = componentAnnotation.value();
+-                                if(beanName.equals("")|| beanName == null){
+-                                    beanName = Introspector.decapitalize(clazz.getSimpleName());
+-                                }
+-                                BeanDefinition beanDefinition = new BeanDefinition();
+-                                beanDefinition.setType(clazz);
+-                                if(clazz.isAnnotationPresent(Scope.class)){
+-                                    Scope scopeAnnotation = clazz.getAnnotation(Scope.class);
+-                                    String value = scopeAnnotation.value();
+-                                    if(value != null && !"".equals(value)){
+-                                        beanDefinition.setScope(value);
+-                                    }else {
+-                                        beanDefinition.setScope("singleton");
+-                                    }
+-                                }else {
+-                                    beanDefinition.setScope("singleton");
+-                                }
+-                                //缓存 beanDefinition bean定义 为后面创建bean 做准备
+-                                beanDefinitionMap.put(beanName,beanDefinition);
+-                            }
+-                        }
+-                    } catch (ClassNotFoundException | NoSuchMethodException e) {
+-                        e.printStackTrace();
+-                    } catch (IllegalAccessException e) {
+-                        e.printStackTrace();
+-                    } catch (InstantiationException e) {
+-                        e.printStackTrace();
+-                    } catch (InvocationTargetException e) {
+-                        e.printStackTrace();
+-                    }
+-                }
+-            }
+-
+-        }
+-    }
+-
+-    //获取bean
+-    public Object getBean(String beanName) throws Exception {
+-        if (!beanDefinitionMap.containsKey(beanName)) {
+-            throw new Exception(beanName+"Not Found");
+-        }
+-        BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+-        if(beanDefinition.getScope().equals("singleton")){
+-            Object bean = singletonObjects.get(beanName);
+-            if(bean == null){
+-                bean = createBean(beanName, beanDefinition);
+-                singletonObjects.put(beanName,bean);
+-            }
+-            return bean;
+-        }else {
+-            return createBean(beanName,beanDefinition);
+-        }
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyBeanDefinitionRegister.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyBeanDefinitionRegister.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyBeanDefinitionRegister.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/importselect/MistyBeanDefinitionRegister.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,22 +0,0 @@
+-package com.misty.spring.importmethod.importselect;
+-
+-import com.misty.spring.importmethod.compent.Cat;
+-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+-import org.springframework.beans.factory.support.RootBeanDefinition;
+-import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+-import org.springframework.core.type.AnnotationMetadata;
+-
+-/**
+- * @ClassName MistyBeanDefinitionRegister
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:56
+- * @Version 1.0
+- **/
+-public class MistyBeanDefinitionRegister implements ImportBeanDefinitionRegistrar {
+-    @Override
+-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+-        RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(Cat.class);
+-        registry.registerBeanDefinition("cat",rootBeanDefinition);
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyLog.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyLog.java b/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyLog.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/conditional/compent/MistyLog.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,15 +0,0 @@
+-package com.misty.spring.conditional.compent;
+-
+-/**
+- * @ClassName MistyLog
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:04
+- * @Version 1.0
+- **/
+-public class MistyLog {
+-
+-    public MistyLog() {
+-        System.out.println("MistyLog 构造方法");
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/mistyspringstarter/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,24 +0,0 @@
+-package com.misty.spring.mistyspringstarter;
+-
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.Import;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/12 15:13
+- * @Version 1.0
+- **/
+-@Configuration
+-@Import(value = MistyService.class)
+-@ComponentScan(basePackages = {"com.misty.spring.mistyspringstarter"})
+-public class MistyConfig {
+-
+-    @Bean
+-    public MistyDao mistyDao(){
+-        return new MistyDao();
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/BaiDuService.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/BaiDuService.java b/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/BaiDuService.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/compent/BaiDuService.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,34 +0,0 @@
+-package com.misty.spring.msityautowired.autowired.compent;
+-
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-
+-
+-/**
+- * @ClassName BaiDuService
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 14:52
+- * @Version 1.0
+- **/
+-@Service
+-public class BaiDuService {
+-
+-    @Autowired
+-    private MistyDao mistyDao2;
+-
+-    @Override
+-    public String toString() {
+-        return "BaiDuService{" +
+-                "mistyDao=" + mistyDao2 +
+-                '}';
+-    }
+-
+-    public MistyDao getMistyDao() {
+-        return mistyDao2;
+-    }
+-
+-    public void setMistyDao(MistyDao mistyDao2) {
+-        mistyDao2 = mistyDao2;
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/spring/BeanDefinition.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/BeanDefinition.java b/misty-spring/src/main/java/com/misty/spring/BeanDefinition.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/BeanDefinition.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,41 +0,0 @@
+-package com.misty.spring;
+-
+-/**
+- * @ClassName BeanDefinition
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 9:19
+- * @Version 1.0
+- **/
+-public class BeanDefinition {
+-
+-    private Class type;
+-
+-    private String scope;
+-
+-    private boolean isLazy = false;
+-
+-    public Class getType() {
+-        return type;
+-    }
+-
+-    public void setType(Class type) {
+-        this.type = type;
+-    }
+-
+-    public String getScope() {
+-        return scope;
+-    }
+-
+-    public void setScope(String scope) {
+-        this.scope = scope;
+-    }
+-
+-    public boolean isLazy() {
+-        return isLazy;
+-    }
+-
+-    public void setLazy(boolean lazy) {
+-        isLazy = lazy;
+-    }
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/beanfactorypostprocess/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,16 +0,0 @@
+-package com.misty.spring.beanfactorypostprocess;
+-
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-
+-/**
+- * @ClassName MisytConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/11/11 16:40
+- * @Version 1.0
+- **/
+-@Configuration
+-@ComponentScan(basePackages = "com.misty.spring.beanfactorypostprocess")
+-public class MistyConfig {
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Dog.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Dog.java b/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Dog.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/importmethod/compent/Dog.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-package com.misty.spring.importmethod.compent;
+-
+-/**
+- * @ClassName Dog
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 9:35
+- * @Version 1.0
+- **/
+-public class Dog {
+-    public Dog() {
+-        System.out.println("Dog 构造方法");
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/classload/TestJDKClassLoader.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/classload/TestJDKClassLoader.java b/jvm/src/main/java/com/misty/jvm/classload/TestJDKClassLoader.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/classload/TestJDKClassLoader.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,43 +0,0 @@
+-package com.misty.jvm.classload;
+-
+-import sun.misc.Launcher;
+-
+-import java.net.URL;
+-
+-/**
+- * @ClassName TestJDKClassLoader
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/21 10:47
+- * @Version 1.0
+- **/
+-public class TestJDKClassLoader {
+-
+-    public static void main(String[] args) {
+-        System.out.println(String.class.getClassLoader());
+-        System.out.println(com.sun.crypto.provider.AESKeyGenerator.class.getClassLoader().getClass().getName());
+-        System.out.println(TestJDKClassLoader.class.getClassLoader().getClass().getName());
+-        System.out.println();
+-        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+-        ClassLoader extClassLoader = systemClassLoader.getParent();
+-        ClassLoader bootstrapLoader = extClassLoader.getParent();
+-        System.out.println("the bootstrapLoader : "+ bootstrapLoader);
+-        System.out.println("the extClassLoader : "+ extClassLoader);
+-        System.out.println("the systemClassLoader : "+ systemClassLoader);
+-        System.out.println();
+-
+-        System.out.println("bootstrapLoader加载以下文件： ");
+-        URL[] urLs = Launcher.getBootstrapClassPath().getURLs();
+-        for (URL urL : urLs) {
+-            System.out.println(urL);
+-        }
+-
+-        System.out.println();
+-        System.out.println("extClassLoader加载以下文件： ");
+-        System.out.println(System.getProperty("java.ext.dirs"));
+-
+-        System.out.println();
+-        System.out.println("appClassLoader加载以下文件： ");
+-        System.out.println(System.getProperty("java.class.path"));
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTest.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTest.java b/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTest.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/classload/MyClassLoaderTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,64 +0,0 @@
+-package com.misty.jvm.classload;
+-
+-
+-import java.io.FileInputStream;
+-import java.io.IOException;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-
+-/**
+- * @ClassName MyClassLoaderTest
+- * @Description 自定义类加载器
+- * @Author HeTao
+- * @Date 2021/4/21 15:11
+- * @Version 1.0
+- **/
+-public class MyClassLoaderTest {
+-
+-    static class MyClassLoader extends ClassLoader{
+-        private String classpath;
+-
+-        public MyClassLoader(String classpath) {
+-            this.classpath = classpath;
+-        }
+-
+-        public String getClasspath() {
+-            return classpath;
+-        }
+-
+-        public void setClasspath(String classpath) {
+-            this.classpath = classpath;
+-        }
+-
+-        @Override
+-        protected Class<?> findClass(final String name) throws ClassNotFoundException {
+-            try{
+-                byte[] data = loadByte(name);
+-                //defineClass将一个字节数组转为Class对象，这个字节数组是class文件读取后最终的字节 数组。
+-                return defineClass(name,data,0,data.length);
+-            }catch (Exception e){
+-                throw new ClassNotFoundException();
+-            }
+-        }
+-
+-        private byte[] loadByte(String name) throws IOException {
+-            name = name.replaceAll("\\.","/");
+-            FileInputStream fileInputStream = new FileInputStream(classpath + "/" + name + ".class");
+-            int len = fileInputStream.available();
+-            byte[] data = new byte[len];
+-            fileInputStream.read(data);
+-            fileInputStream.close();
+-            return data;
+-        }
+-    }
+-
+-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+-        //初始化自定义类加载器  会先初始化父类classloader 其中会把自定义类加载的父加载器设置为应用程序类加载器AppClassLoader
+-        MyClassLoader classLoader = new MyClassLoader("D:/test");
+-        Class<?> clazz = classLoader.loadClass("com.misty.jvm.classload.User1");
+-        Object o = clazz.newInstance();
+-        Method method = clazz.getDeclaredMethod("sout", null);
+-        method.invoke(o,null);
+-        System.out.println(clazz.getClassLoader().getClass().getName());
+-    }
+-}
+Index: misty-spring/build.gradle
+===================================================================
+diff --git a/misty-spring/build.gradle b/misty-spring/build.gradle
+deleted file mode 100644
+--- a/misty-spring/build.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,14 +0,0 @@
+-plugins {
+-    id 'java'
+-}
+-
+-group 'com.misty'
+-
+-repositories {
+-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+-    //mavenCentral()
+-}
+-
+-dependencies {
+-    testCompile group: 'junit', name: 'junit', version: '4.12'
+-}
+Index: application-spring/build.gradle
+===================================================================
+diff --git a/application-spring/build.gradle b/application-spring/build.gradle
+deleted file mode 100644
+--- a/application-spring/build.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,17 +0,0 @@
+-plugins {
+-    id 'java'
+-}
+-
+-group 'com.misty'
+-version '1.0-SNAPSHOT'
+-
+-repositories {
+-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+-    //mavenCentral()
+-}
+-
+-dependencies {
+-    testCompile group: 'junit', name: 'junit', version: '4.12'
+-
+-    compile group: 'org.springframework', name: 'spring-context',version: '4.3.20.RELEASE'
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/concurrent/Boss.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Boss.java b/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Boss.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/concurrent/Boss.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,52 +0,0 @@
+-package com.misty.spring.concurrent;
+-
+-import java.util.concurrent.CountDownLatch;
+-
+-/**
+- * @ClassName Boss
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/12/11 14:21
+- * @Version 1.0
+- **/
+-public class Boss implements Runnable {
+-
+-    private CountDownLatch downLatch;
+-
+-    private String name;
+-
+-    public Boss(CountDownLatch downLatch, String name) {
+-        this.downLatch = downLatch;
+-        this.name = name;
+-    }
+-
+-    public Boss() {
+-    }
+-
+-    public CountDownLatch getDownLatch() {
+-        return downLatch;
+-    }
+-
+-    public void setDownLatch(CountDownLatch downLatch) {
+-        this.downLatch = downLatch;
+-    }
+-
+-    public String getName() {
+-        return name;
+-    }
+-
+-    public void setName(String name) {
+-        this.name = name;
+-    }
+-
+-    @Override
+-    public void run() {
+-        System.out.println("老板正在等所有的工人干完活......");
+-        try {
+-            this.downLatch.await();
+-        } catch (InterruptedException e) {
+-            e.printStackTrace();
+-        }
+-        System.out.println("工人活都干完了，老板开始检查了！");
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/spring/annotation/MistyValue.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/annotation/MistyValue.java b/misty-spring/src/main/java/com/misty/spring/annotation/MistyValue.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/annotation/MistyValue.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,20 +0,0 @@
+-package com.misty.spring.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-/**
+- * @ClassName Component
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/27 17:36
+- * @Version 1.0
+- **/
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target(ElementType.FIELD)
+-public @interface MistyValue {
+-
+-    String value() default "";
+-}
+Index: spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/config/MistyConfig.java
+===================================================================
+diff --git a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/config/MistyConfig.java b/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/config/MistyConfig.java
+deleted file mode 100644
+--- a/spring-annopriciple/src/main/java/com/misty/spring/msityautowired/autowired/config/MistyConfig.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,38 +0,0 @@
+-package com.misty.spring.msityautowired.autowired.config;
+-
+-import com.misty.spring.msityautowired.autowired.compent.MistyDao;
+-import com.misty.spring.msityautowired.autowired.compent.MistyService;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.ComponentScan;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.Primary;
+-
+-/**
+- * @ClassName MistyConfig
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2020/10/28 15:17
+- * @Version 1.0
+- **/
+-@Configuration
+-@ComponentScan(basePackages = {"com.misty.spring.msityautowired.autowired"})
+-public class MistyConfig {
+-
+-    @Bean
+-    public MistyDao mistyDao2() {
+-        MistyDao mistyDao = new MistyDao();
+-        mistyDao.setFlag(2);
+-        return mistyDao;
+-    }
+-
+-    @Bean
+-    public MistyDao mistyDao() {
+-        MistyDao mistyDao = new MistyDao();
+-        mistyDao.setFlag(1);
+-        return mistyDao;
+-    }
+-
+-    public MistyService mistyService() {
+-        return new MistyService();
+-    }
+-}
+Index: jvm/src/main/java/com/misty/jvm/HeapTest.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jvm/HeapTest.java b/jvm/src/main/java/com/misty/jvm/HeapTest.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jvm/HeapTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,25 +0,0 @@
+-package com.misty.jvm;
+-
+-import java.util.ArrayList;
+-
+-/**
+- * @ClassName HeapTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/14 14:29
+- * @Version 1.0
+- **/
+-public class HeapTest {
+-    //100kb
+-    @SuppressWarnings("AlibabaCommentsMustBeJavadocFormat")
+-    byte[] a = new byte[1024*100];
+-
+-    public static void main(String[] args) throws InterruptedException {
+-        ArrayList<HeapTest> heapTests = new ArrayList<>();
+-        while (true){
+-            heapTests.add(new HeapTest());
+-            Thread.sleep(30);
+-        }
+-    }
+-
+-}
+Index: jvm/src/main/java/com/misty/jmm/VolatileDemoTest.java
+===================================================================
+diff --git a/jvm/src/main/java/com/misty/jmm/VolatileDemoTest.java b/jvm/src/main/java/com/misty/jmm/VolatileDemoTest.java
+deleted file mode 100644
+--- a/jvm/src/main/java/com/misty/jmm/VolatileDemoTest.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,36 +0,0 @@
+-package com.misty.jmm;
+-
+-/**
+- * @ClassName VolatileDemoTest
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/4/15 15:35
+- * @Version 1.0
+- **/
+-public class VolatileDemoTest {
+-
+-    private static int num = 0;
+-
+-    public static void main(String[] args) throws InterruptedException {
+-        Thread[] threads = new Thread[10];
+-        for (int i = 0; i < threads.length; i++) {
+-            threads[i] = new Thread(new Runnable() {
+-                @Override
+-                public void run() {
+-                    for (int j=0 ;j< 1000 ;j++){
+-                        increase();
+-                    }
+-                }
+-            });
+-            threads[i].start();
+-        }
+-        for (Thread thread : threads) {
+-            thread.join();
+-        }
+-        System.out.println(num);
+-    }
+-
+-    public static void increase() {
+-        num++;
+-    }
+-}
+Index: misty-spring/src/main/java/com/misty/spring/BeanPostProcessor.java
+===================================================================
+diff --git a/misty-spring/src/main/java/com/misty/spring/BeanPostProcessor.java b/misty-spring/src/main/java/com/misty/spring/BeanPostProcessor.java
+deleted file mode 100644
+--- a/misty-spring/src/main/java/com/misty/spring/BeanPostProcessor.java	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ /dev/null	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
+@@ -1,34 +0,0 @@
+-package com.misty.spring;
+-
+-/**
+- * @ClassName BeanPostProcessor
+- * @Description TODO
+- * @Author HeTao
+- * @Date 2021/9/28 14:34
+- * @Version 1.0
+- **/
+-public interface BeanPostProcessor {
+-
+-
+-    /**
+-     * 初始化前
+-     * @param bean
+-     * @param beanName
+-     * @return
+-     * @throws Exception
+-     */
+-    default Object postProcessBeforeInitialization(Object bean, String beanName) throws Exception {
+-        return bean;
+-    }
+-
+-    /**
+-     * 初始化后
+-     * @param bean
+-     * @param beanName
+-     * @return
+-     * @throws Exception
+-     */
+-    default Object postProcessAfterInitialization(Object bean, String beanName) throws Exception {
+-        return bean;
+-    }
+-}
+Index: spring-framework-5.3.x/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n\tid 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false\n\tid 'io.spring.nohttp' version '0.0.10'\n\tid \"io.freefair.aspectj\" version '6.2.0' apply false\n\tid 'org.jetbrains.dokka' version '1.5.0' apply false\n\tid 'org.jetbrains.kotlin.jvm' version '1.5.32' apply false\n\tid \"org.jetbrains.kotlin.plugin.serialization\" version \"1.5.32\" apply false\n\tid 'org.asciidoctor.jvm.convert' version '3.3.2'\n\tid 'org.asciidoctor.jvm.pdf' version '3.3.2'\n\tid \"org.unbroken-dome.xjc\" version '2.0.0' apply false\n\tid \"com.github.ben-manes.versions\" version '0.39.0'\n\tid \"com.github.johnrengelman.shadow\" version '7.0.0' apply false\n\tid 'de.undercouch.download' version '4.1.2'\n\tid \"me.champeau.jmh\" version \"0.6.6\" apply false\n}\n\next {\n\tmoduleProjects = subprojects.findAll { it.name.startsWith(\"spring-\") }\n\tjavaProjects = subprojects - project(\":framework-bom\")\n\twithoutJclOverSlf4j = {\n\t\texclude group: \"org.slf4j\", name: \"jcl-over-slf4j\"\n\t}\n}\n\nconfigure(allprojects) { project ->\n\tapply plugin: \"io.spring.dependency-management\"\n\n\tdependencyManagement {\n\t\timports {\n\t\t\tmavenBom \"com.fasterxml.jackson:jackson-bom:2.12.6\"\n\t\t\tmavenBom \"io.netty:netty-bom:4.1.72.Final\"\n\t\t\tmavenBom \"io.projectreactor:reactor-bom:2020.0.14\"\n\t\t\tmavenBom \"io.r2dbc:r2dbc-bom:Arabba-SR11\"\n\t\t\tmavenBom \"io.rsocket:rsocket-bom:1.1.1\"\n\t\t\tmavenBom \"org.eclipse.jetty:jetty-bom:9.4.44.v20210927\"\n\t\t\tmavenBom \"org.jetbrains.kotlin:kotlin-bom:1.5.32\"\n\t\t\tmavenBom \"org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.5.2\"\n\t\t\tmavenBom \"org.jetbrains.kotlinx:kotlinx-serialization-bom:1.2.2\"\n\t\t\tmavenBom \"org.junit:junit-bom:5.8.2\"\n\t\t}\n\t\tdependencies {\n\t\t\tdependencySet(group: 'org.apache.logging.log4j', version: '2.16.0') {\n\t\t\t\tentry 'log4j-api'\n\t\t\t\tentry 'log4j-core'\n\t\t\t\tentry 'log4j-jul'\n\t\t\t\tentry 'log4j-slf4j-impl'\n\t\t\t}\n\t\t\tdependency \"org.slf4j:slf4j-api:1.7.32\"\n\t\t\tdependency(\"com.google.code.findbugs:findbugs:3.0.1\") {\n\t\t\t\texclude group: \"dom4j\", name: \"dom4j\"\n\t\t\t}\n\t\t\tdependency \"com.google.code.findbugs:jsr305:3.0.2\"\n\n\t\t\tdependencySet(group: 'org.aspectj', version: '1.9.7') {\n\t\t\t\tentry 'aspectjrt'\n\t\t\t\tentry 'aspectjtools'\n\t\t\t\tentry 'aspectjweaver'\n\t\t\t}\n\t\t\tdependencySet(group: 'org.codehaus.groovy', version: '3.0.9') {\n\t\t\t\tentry 'groovy'\n\t\t\t\tentry 'groovy-jsr223'\n\t\t\t\tentry 'groovy-templates'  // requires findbugs for warning-free compilation\n\t\t\t\tentry 'groovy-test'\n\t\t\t\tentry 'groovy-xml'\n\t\t\t}\n\n\t\t\tdependency \"io.reactivex:rxjava:1.3.8\"\n\t\t\tdependency \"io.reactivex:rxjava-reactive-streams:1.2.1\"\n\t\t\tdependency \"io.reactivex.rxjava2:rxjava:2.2.21\"\n\t\t\tdependency \"io.reactivex.rxjava3:rxjava:3.1.3\"\n\t\t\tdependency \"io.smallrye.reactive:mutiny:1.2.0\"\n\t\t\tdependency \"io.projectreactor.tools:blockhound:1.0.6.RELEASE\"\n\n\t\t\tdependency \"com.caucho:hessian:4.0.63\"\n\t\t\tdependency \"com.fasterxml:aalto-xml:1.3.0\"\n\t\t\tdependency(\"com.fasterxml.woodstox:woodstox-core:6.2.7\") {\n\t\t\t\texclude group: \"stax\", name: \"stax-api\"\n\t\t\t}\n\t\t\tdependency \"com.google.code.gson:gson:2.8.9\"\n\t\t\tdependency \"com.google.protobuf:protobuf-java-util:3.19.1\"\n\t\t\tdependency \"com.googlecode.protobuf-java-format:protobuf-java-format:1.4\"\n\t\t\tdependency(\"com.thoughtworks.xstream:xstream:1.4.18\") {\n\t\t\t\texclude group: \"xpp3\", name: \"xpp3_min\"\n\t\t\t\texclude group: \"xmlpull\", name: \"xmlpull\"\n\t\t\t}\n\t\t\tdependency \"org.apache.johnzon:johnzon-jsonb:1.2.15\"\n\t\t\tdependency(\"org.codehaus.jettison:jettison:1.3.8\") {\n\t\t\t\texclude group: \"stax\", name: \"stax-api\"\n\t\t\t}\n\t\t\tdependencySet(group: 'org.jibx', version: '1.3.3') {\n\t\t\t\tentry 'jibx-bind'\n\t\t\t\tentry 'jibx-run'\n\t\t\t}\n\t\t\tdependency \"org.ogce:xpp3:1.1.6\"\n\t\t\tdependency \"org.yaml:snakeyaml:1.30\"\n\n\t\t\tdependency \"com.h2database:h2:1.4.200\"\n\t\t\tdependency \"com.github.ben-manes.caffeine:caffeine:2.9.3\"\n\t\t\tdependency \"com.github.librepdf:openpdf:1.3.26\"\n\t\t\tdependency \"com.rometools:rome:1.16.0\"\n\t\t\tdependency \"commons-io:commons-io:2.5\"\n\t\t\tdependency \"io.vavr:vavr:0.10.4\"\n\t\t\tdependency \"net.sf.jopt-simple:jopt-simple:5.0.4\"\n\t\t\tdependencySet(group: 'org.apache.activemq', version: '5.16.2') {\n\t\t\t\tentry 'activemq-broker'\n\t\t\t\tentry('activemq-kahadb-store') {\n\t\t\t\t\texclude group: \"org.springframework\", name: \"spring-context\"\n\t\t\t\t}\n\t\t\t\tentry 'activemq-stomp'\n\t\t\t}\n\t\t\tdependency \"org.apache.bcel:bcel:6.0\"\n\t\t\tdependency \"org.apache.commons:commons-pool2:2.9.0\"\n\t\t\tdependencySet(group: 'org.apache.derby', version: '10.14.2.0') {\n\t\t\t\tentry 'derby'\n\t\t\t\tentry 'derbyclient'\n\t\t\t}\n\t\t\tdependency \"org.apache.poi:poi-ooxml:4.1.2\"\n\t\t\tdependency \"org.apache-extras.beanshell:bsh:2.0b6\"\n\t\t\tdependency \"org.freemarker:freemarker:2.3.31\"\n\t\t\tdependency \"org.hsqldb:hsqldb:2.5.2\"\n\t\t\tdependency \"org.quartz-scheduler:quartz:2.3.2\"\n\t\t\tdependency \"org.codehaus.fabric3.api:commonj:1.1.0\"\n\t\t\tdependency \"net.sf.ehcache:ehcache:2.10.6\"\n\t\t\tdependency \"org.ehcache:jcache:1.0.1\"\n\t\t\tdependency \"org.ehcache:ehcache:3.4.0\"\n\t\t\tdependency \"org.hibernate:hibernate-core:5.4.32.Final\"\n\t\t\tdependency \"org.hibernate:hibernate-validator:6.2.0.Final\"\n\t\t\tdependency \"org.webjars:webjars-locator-core:0.48\"\n\t\t\tdependency \"org.webjars:underscorejs:1.8.3\"\n\n\t\t\tdependencySet(group: 'org.apache.tomcat', version: '9.0.56') {\n\t\t\t\tentry 'tomcat-util'\n\t\t\t\tentry('tomcat-websocket') {\n\t\t\t\t\texclude group: \"org.apache.tomcat\", name: \"tomcat-servlet-api\"\n\t\t\t\t\texclude group: \"org.apache.tomcat\", name: \"tomcat-websocket-api\"\n\t\t\t\t}\n\t\t\t}\n\t\t\tdependencySet(group: 'org.apache.tomcat.embed', version: '9.0.56') {\n\t\t\t\tentry 'tomcat-embed-core'\n\t\t\t\tentry 'tomcat-embed-websocket'\n\t\t\t}\n\t\t\tdependencySet(group: 'io.undertow', version: '2.2.14.Final') {\n\t\t\t\tentry 'undertow-core'\n\t\t\t\tentry('undertow-servlet') {\n\t\t\t\t\texclude group: \"org.jboss.spec.javax.servlet\", name: \"jboss-servlet-api_4.0_spec\"\n\t\t\t\t\texclude group: \"org.jboss.spec.javax.annotation\", name: \"jboss-annotations-api_1.3_spec\"\n\t\t\t\t}\n\t\t\t\tentry('undertow-websockets-jsr') {\n\t\t\t\t\texclude group: \"org.jboss.spec.javax.websocket\", name: \"jboss-websocket-api_1.1_spec\"\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tdependency \"org.eclipse.jetty:jetty-reactive-httpclient:1.1.10\"\n\t\t\tdependency 'org.apache.httpcomponents.client5:httpclient5:5.1.2'\n\t\t\tdependency 'org.apache.httpcomponents.core5:httpcore5-reactive:5.1.2'\n\t\t\tdependency(\"org.apache.httpcomponents:httpclient:4.5.13\") {\n\t\t\t\texclude group: \"commons-logging\", name: \"commons-logging\"\n\t\t\t}\n\t\t\tdependency(\"org.apache.httpcomponents:httpasyncclient:4.1.5\") {\n\t\t\t\texclude group: \"commons-logging\", name: \"commons-logging\"\n\t\t\t}\n\t\t\tdependencySet(group: 'com.squareup.okhttp3', version: '3.14.9') {\n\t\t\t\tentry 'okhttp'\n\t\t\t\tentry 'mockwebserver'\n\t\t\t}\n\n\t\t\tdependency \"org.jruby:jruby:9.2.20.1\"\n\t\t\tdependency \"org.python:jython-standalone:2.7.1\"\n\t\t\tdependency \"org.mozilla:rhino:1.7.11\"\n\n\t\t\tdependency \"commons-fileupload:commons-fileupload:1.4\"\n\t\t\tdependency \"org.synchronoss.cloud:nio-multipart-parser:1.1.0\"\n\n\t\t\tdependency(\"org.dom4j:dom4j:2.1.3\") {\n\t\t\t\texclude group: \"jaxen\", name: \"jaxen\"\n\t\t\t\texclude group: \"net.java.dev.msv\", name: \"xsdlib\"\n\t\t\t\texclude group: \"pull-parser\", name: \"pull-parser\"\n\t\t\t\texclude group: \"xpp3\", name: \"xpp3\"\n\t\t\t}\n\t\t\tdependency(\"jaxen:jaxen:1.2.0\") {\n\t\t\t\texclude group: \"dom4j\", name: \"dom4j\"\n\t\t\t}\n\n\t\t\tdependency(\"junit:junit:4.13.2\") {\n\t\t\t\texclude group: \"org.hamcrest\", name: \"hamcrest-core\"\n\t\t\t}\n\t\t\tdependency(\"de.bechte.junit:junit-hierarchicalcontextrunner:4.12.1\") {\n\t\t\t\texclude group: \"junit\", name: \"junit\"\n\t\t\t}\n\t\t\tdependency \"org.testng:testng:7.4.0\"\n\t\t\tdependency \"org.junit.support:testng-engine:1.0.1\"\n\t\t\tdependency \"org.hamcrest:hamcrest:2.1\"\n\t\t\tdependency \"org.awaitility:awaitility:3.1.6\"\n\t\t\tdependency \"org.assertj:assertj-core:3.21.0\"\n\t\t\tdependencySet(group: 'org.xmlunit', version: '2.8.3') {\n\t\t\t\tentry 'xmlunit-assertj'\n\t\t\t\tentry('xmlunit-matchers') {\n\t\t\t\t\texclude group: \"org.hamcrest\", name: \"hamcrest-core\"\n\t\t\t\t}\n\t\t\t}\n\t\t\tdependencySet(group: 'org.mockito', version: '4.1.0') {\n\t\t\t\tentry('mockito-core') {\n\t\t\t\t\texclude group: \"org.hamcrest\", name: \"hamcrest-core\"\n\t\t\t\t}\n\t\t\t\tentry 'mockito-junit-jupiter'\n\t\t\t}\n\t\t\tdependency \"io.mockk:mockk:1.12.1\"\n\n\t\t\tdependency(\"net.sourceforge.htmlunit:htmlunit:2.55.0\") {\n\t\t\t\texclude group: \"commons-logging\", name: \"commons-logging\"\n\t\t\t}\n\t\t\tdependency(\"org.seleniumhq.selenium:htmlunit-driver:2.55.0\") {\n\t\t\t\texclude group: \"commons-logging\", name: \"commons-logging\"\n\t\t\t}\n\t\t\tdependency(\"org.seleniumhq.selenium:selenium-java:3.141.59\") {\n\t\t\t\texclude group: \"commons-logging\", name: \"commons-logging\"\n\t\t\t\texclude group: \"io.netty\", name: \"netty\"\n\t\t\t}\n\t\t\tdependency \"org.skyscreamer:jsonassert:1.5.0\"\n\t\t\tdependency \"com.jayway.jsonpath:json-path:2.6.0\"\n\t\t\tdependency \"org.bouncycastle:bcpkix-jdk15on:1.66\"\n\n\t\t\tdependencySet(group: 'org.apache.tiles', version: '3.0.8') {\n\t\t\t\tentry 'tiles-api'\n\t\t\t\tentry('tiles-core', withoutJclOverSlf4j)\n\t\t\t\tentry('tiles-servlet', withoutJclOverSlf4j)\n\t\t\t\tentry('tiles-jsp', withoutJclOverSlf4j)\n\t\t\t\tentry('tiles-el', withoutJclOverSlf4j)\n\t\t\t\tentry('tiles-extras') {\n\t\t\t\t\texclude group: \"org.springframework\", name: \"spring-web\"\n\t\t\t\t\texclude group: \"org.slf4j\", name: \"jcl-over-slf4j\"\n\t\t\t\t}\n\t\t\t}\n\t\t\tdependency(\"org.apache.taglibs:taglibs-standard-jstlel:1.2.5\") {\n\t\t\t\texclude group: \"org.apache.taglibs\", name: \"taglibs-standard-spec\"\n\t\t\t}\n\n\t\t\tdependency \"com.ibm.websphere:uow:6.0.2.17\"\n\t\t\tdependency \"com.jamonapi:jamon:2.82\"\n\t\t\tdependency \"joda-time:joda-time:2.10.13\"\n\t\t\tdependency \"org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.9\"\n\t\t\tdependency \"org.javamoney:moneta:1.3\"\n\n\t\t\tdependency \"com.sun.activation:javax.activation:1.2.0\"\n\t\t\tdependency \"com.sun.mail:javax.mail:1.6.2\"\n\t\t\tdependencySet(group: 'com.sun.xml.bind', version: '2.3.0.1') {\n\t\t\t\tentry 'jaxb-core'\n\t\t\t\tentry 'jaxb-impl'\n\t\t\t\tentry 'jaxb-xjc'\n\t\t\t}\n\n\t\t\tdependency \"javax.activation:javax.activation-api:1.2.0\"\n\t\t\tdependency \"javax.annotation:javax.annotation-api:1.3.2\"\n\t\t\tdependency \"javax.cache:cache-api:1.1.0\"\n\t\t\tdependency \"javax.ejb:javax.ejb-api:3.2\"\n\t\t\tdependency \"javax.el:javax.el-api:3.0.1-b04\"\n\t\t\tdependency \"javax.enterprise.concurrent:javax.enterprise.concurrent-api:1.0\"\n\t\t\tdependency \"javax.faces:javax.faces-api:2.2\"\n\t\t\tdependency \"javax.inject:javax.inject:1\"\n\t\t\tdependency \"javax.inject:javax.inject-tck:1\"\n\t\t\tdependency \"javax.interceptor:javax.interceptor-api:1.2.2\"\n\t\t\tdependency \"javax.jms:javax.jms-api:2.0.1\"\n\t\t\tdependency \"javax.json:javax.json-api:1.1.4\"\n\t\t\tdependency \"javax.json.bind:javax.json.bind-api:1.0\"\n\t\t\tdependency \"javax.mail:javax.mail-api:1.6.2\"\n\t\t\tdependency \"javax.money:money-api:1.0.3\"\n\t\t\tdependency \"javax.resource:javax.resource-api:1.7.1\"\n\t\t\tdependency \"javax.servlet:javax.servlet-api:4.0.1\"\n\t\t\tdependency \"javax.servlet.jsp:javax.servlet.jsp-api:2.3.2-b02\"\n\t\t\tdependency \"javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1\"\n\t\t\tdependency \"javax.transaction:javax.transaction-api:1.3\"\n\t\t\tdependency \"javax.validation:validation-api:2.0.1.Final\"\n\t\t\tdependency \"javax.websocket:javax.websocket-api:1.1\"\n\t\t\tdependency \"javax.xml.bind:jaxb-api:2.3.1\"\n\t\t\tdependency \"javax.xml.ws:jaxws-api:2.3.1\"\n\n\t\t\tdependency \"org.eclipse.persistence:javax.persistence:2.2.0\"\n\n\t\t\t// Substitute for \"javax.management:jmxremote_optional:1.0.1_04\" which\n\t\t\t// is not available on Maven Central\n\t\t\tdependency \"org.glassfish.external:opendmk_jmxremote_optional_jar:1.0-b01-ea\"\n\t\t\tdependency \"org.glassfish:javax.el:3.0.1-b08\"\n\t\t\tdependency \"org.glassfish.main:javax.jws:4.0-b33\"\n\t\t\tdependency \"org.glassfish.tyrus:tyrus-container-servlet:1.13.1\"\n\t\t}\n\t\tgeneratedPomCustomization {\n\t\t\tenabled = false\n\t\t}\n\t\tresolutionStrategy {\n\t\t\tcacheChangingModulesFor 0, \"seconds\"\n\t\t}\n\t\trepositories {\n\t\t\tmavenCentral()\n\t\t\tmaven { url \"https://repo.spring.io/libs-spring-framework-build\" }\n\t\t}\n\t}\n\tconfigurations.all {\n\t\tresolutionStrategy {\n\t\t\tcacheChangingModulesFor 0, \"seconds\"\n\t\t\tcacheDynamicVersionsFor 0, \"seconds\"\n\t\t}\n\t}\n}\n\nconfigure([rootProject] + javaProjects) { project ->\n\tgroup = \"org.springframework\"\n\n\tapply plugin: \"java\"\n\tapply plugin: \"java-test-fixtures\"\n\tapply plugin: \"checkstyle\"\n\tapply plugin: 'org.springframework.build.compile'\n\tapply from: \"${rootDir}/gradle/toolchains.gradle\"\n\tapply from: \"${rootDir}/gradle/ide.gradle\"\n\n\tpluginManager.withPlugin(\"kotlin\") {\n\t\tapply plugin: \"org.jetbrains.dokka\"\n\t\tapply from: \"${rootDir}/gradle/docs-dokka.gradle\"\n\n\t\tcompileKotlin {\n\t\t\tkotlinOptions {\n\t\t\t\tlanguageVersion = \"1.3\"\n\t\t\t\tapiVersion = \"1.3\"\n\t\t\t\tfreeCompilerArgs = [\"-Xjsr305=strict\", \"-Xsuppress-version-warnings\", \"-Xopt-in=kotlin.RequiresOptIn\"]\n\t\t\t\tallWarningsAsErrors = true\n\t\t\t}\n\t\t}\n\t\tcompileTestKotlin {\n\t\t\tkotlinOptions {\n\t\t\t\tfreeCompilerArgs = [\"-Xjsr305=strict\"]\n\t\t\t}\n\t\t}\n\t}\n\n\ttest {\n\t\tuseJUnitPlatform()\n\t\tinclude([\"**/*Tests.class\", \"**/*Test.class\"])\n\t\tsystemProperty(\"java.awt.headless\", \"true\")\n\t\tsystemProperty(\"testGroups\", project.properties.get(\"testGroups\"))\n\t\tsystemProperty(\"io.netty.leakDetection.level\", \"paranoid\")\n\t}\n\n\tcheckstyle {\n\t\ttoolVersion = \"9.2\"\n\t\tconfigDirectory.set(rootProject.file(\"src/checkstyle\"))\n\t}\n\n\tdependencies {\n\t\ttestImplementation(\"org.junit.jupiter:junit-jupiter-api\")\n\t\ttestImplementation(\"org.junit.jupiter:junit-jupiter-params\")\n\t\ttestImplementation(\"org.junit.platform:junit-platform-suite-api\")\n\t\ttestImplementation(\"org.mockito:mockito-core\")\n\t\ttestImplementation(\"org.mockito:mockito-junit-jupiter\")\n\t\ttestImplementation(\"io.mockk:mockk\")\n\t\ttestImplementation(\"org.assertj:assertj-core\")\n\t\t// Pull in the latest JUnit 5 Launcher API to ensure proper support in IDEs.\n\t\ttestRuntimeOnly(\"org.junit.jupiter:junit-jupiter-engine\")\n\t\ttestRuntimeOnly(\"org.junit.platform:junit-platform-launcher\")\n\t\ttestRuntimeOnly(\"org.junit.platform:junit-platform-suite-engine\")\n\t\ttestRuntimeOnly(\"org.apache.logging.log4j:log4j-core\")\n\t\ttestRuntimeOnly(\"org.apache.logging.log4j:log4j-jul\")\n\t\ttestRuntimeOnly(\"org.apache.logging.log4j:log4j-slf4j-impl\")\n\t\t// JSR-305 only used for non-required meta-annotations\n\t\tcompileOnly(\"com.google.code.findbugs:jsr305\")\n\t\ttestCompileOnly(\"com.google.code.findbugs:jsr305\")\n\t\tcheckstyle(\"io.spring.javaformat:spring-javaformat-checkstyle:0.0.29\")\n\t}\n\n\text.javadocLinks = [\n\t\t\t\"https://docs.oracle.com/javase/8/docs/api/\",\n\t\t\t\"https://docs.oracle.com/javaee/7/api/\",\n\t\t\t\"https://docs.oracle.com/cd/E13222_01/wls/docs90/javadocs/\",  // CommonJ\n\t\t\t\"https://www.ibm.com/docs/api/v1/content/SSEQTP_8.5.5/com.ibm.websphere.javadoc.doc/web/apidocs/\",\n\t\t\t\"https://docs.jboss.org/jbossas/javadoc/4.0.5/connector/\",\n\t\t\t\"https://docs.jboss.org/jbossas/javadoc/7.1.2.Final/\",\n\t\t\t\"https://tiles.apache.org/tiles-request/apidocs/\",\n\t\t\t\"https://tiles.apache.org/framework/apidocs/\",\n\t\t\t\"https://www.eclipse.org/aspectj/doc/released/aspectj5rt-api/\",\n\t\t\t\"https://www.ehcache.org/apidocs/2.10.4/\",\n\t\t\t\"https://www.quartz-scheduler.org/api/2.3.0/\",\n\t\t\t\"https://fasterxml.github.io/jackson-core/javadoc/2.10/\",\n\t\t\t\"https://fasterxml.github.io/jackson-databind/javadoc/2.10/\",\n\t\t\t\"https://fasterxml.github.io/jackson-dataformat-xml/javadoc/2.10/\",\n\t\t\t\"https://hc.apache.org/httpcomponents-client-5.1.x/current/httpclient5/apidocs/\",\n\t\t\t\"https://projectreactor.io/docs/test/release/api/\",\n\t\t\t\"https://junit.org/junit4/javadoc/4.13.2/\",\n\t\t\t// Disabling linking to JUnit 5.8.2, since the `package-list` file no longer exists due to\n\t\t\t// https://github.com/junit-team/junit5/commit/67ad4e545518b0ce2b0e7c96df31a669866d5003.\n\t\t\t// \"https://junit.org/junit5/docs/5.8.2/api/\",\n\t\t\t\"https://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/\",\n\t\t\t\"https://javadoc.io/static/io.rsocket/rsocket-core/1.1.1/\",\n\t\t\t\"https://r2dbc.io/spec/0.8.5.RELEASE/api/\"\n\t] as String[]\n}\n\nconfigure(moduleProjects) { project ->\n\tapply from: \"${rootDir}/gradle/spring-module.gradle\"\n}\n\nconfigure(rootProject) {\n\tdescription = \"Spring Framework\"\n\n\tapply plugin: \"groovy\"\n\tapply plugin: \"kotlin\"\n\tapply plugin: \"io.spring.nohttp\"\n\tapply plugin: 'org.springframework.build.api-diff'\n\tapply from: \"${rootDir}/gradle/publications.gradle\"\n\tapply from: \"${rootDir}/gradle/docs.gradle\"\n\n\tnohttp {\n\t\tsource.exclude \"**/test-output/**\"\n\t\tallowlistFile = project.file(\"src/nohttp/allowlist.lines\")\n\t\tdef rootPath = file(rootDir).toPath()\n\t\tdef projectDirs = allprojects.collect { it.projectDir } + \"${rootDir}/buildSrc\"\n\t\tprojectDirs.forEach { dir ->\n\t\t\t[ 'bin', 'build', 'out', '.settings' ]\n\t\t\t\t.collect { rootPath.relativize(new File(dir, it).toPath()) }\n\t\t\t\t.forEach { source.exclude \"$it/**\" }\n\t\t\t[ '.classpath', '.project' ]\n\t\t\t\t.collect { rootPath.relativize(new File(dir, it).toPath()) }\n\t\t\t\t.forEach { source.exclude \"$it\" }\n\t\t}\n\t}\n\n\tpublishing {\n\t\tpublications {\n\t\t\tmavenJava(MavenPublication) {\n\t\t\t\tartifact docsZip\n\t\t\t\tartifact schemaZip\n\t\t\t\tartifact distZip\n\t\t\t}\n\t\t}\n\t}\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-framework-5.3.x/build.gradle b/spring-framework-5.3.x/build.gradle
+--- a/spring-framework-5.3.x/build.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ b/spring-framework-5.3.x/build.gradle	(date 1641348768556)
+@@ -64,6 +64,10 @@
+ 				entry 'groovy-xml'
+ 			}
+ 
++			dependency "com.google.guava:guava:18.0"
++			dependency "com.sun.istack:istack-commons-runtime:2.16"
++			dependency "com.sun.xml.fastinfoset:FastInfoset:1.2.12"
++
+ 			dependency "io.reactivex:rxjava:1.3.8"
+ 			dependency "io.reactivex:rxjava-reactive-streams:1.2.1"
+ 			dependency "io.reactivex.rxjava2:rxjava:2.2.21"
+Index: spring-framework-5.3.x/settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>pluginManagement {\n\trepositories {\n\t\tgradlePluginPortal()\n\t\tmaven { url \"https://repo.spring.io/plugins-release\" }\n\t}\n}\n\nplugins {\n\tid \"com.gradle.enterprise\" version \"3.7.2\"\n\tid \"io.spring.ge.conventions\" version \"0.0.7\"\n}\n\ninclude \"spring-aop\"\ninclude \"spring-aspects\"\ninclude \"spring-beans\"\ninclude \"spring-context\"\ninclude \"spring-context-indexer\"\ninclude \"spring-context-support\"\ninclude \"spring-core\"\ninclude \"spring-expression\"\ninclude \"spring-instrument\"\ninclude \"spring-jcl\"\ninclude \"spring-jdbc\"\ninclude \"spring-jms\"\ninclude \"spring-messaging\"\ninclude \"spring-orm\"\ninclude \"spring-oxm\"\ninclude \"spring-r2dbc\"\ninclude \"spring-test\"\ninclude \"spring-tx\"\ninclude \"spring-web\"\ninclude \"spring-webflux\"\ninclude \"spring-webmvc\"\ninclude \"spring-websocket\"\ninclude \"framework-bom\"\ninclude \"integration-tests\"\n\nrootProject.name = \"spring\"\nrootProject.children.each {project ->\n\tproject.buildFileName = \"${project.name}.gradle\"\n}\n\nsettings.gradle.projectsLoaded {\n\tgradleEnterprise {\n\t\tbuildScan {\n\t\t\tFile buildDir = settings.gradle.rootProject.getBuildDir()\n\t\t\tbuildDir.mkdirs()\n\t\t\tnew File(buildDir, \"build-scan-uri.txt\").text = \"(build scan not generated)\"\n\t\t\tbuildScanPublished { scan ->\n\t\t\t\tif (buildDir.exists()) {\n\t\t\t\t\tnew File(buildDir, \"build-scan-uri.txt\").text = \"${scan.buildScanUri}\\n\"\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-framework-5.3.x/settings.gradle b/spring-framework-5.3.x/settings.gradle
+--- a/spring-framework-5.3.x/settings.gradle	(revision e0ab0451639db9e9f874d8fcb830c8c1b1b864d0)
++++ b/spring-framework-5.3.x/settings.gradle	(date 1641346037609)
+@@ -35,6 +35,11 @@
+ include "framework-bom"
+ include "integration-tests"
+ 
++include 'spring-annopriciple'
++include 'jvm'
++include 'misty-spring'
++include 'application-spring'
++
+ rootProject.name = "spring"
+ rootProject.children.each {project ->
+ 	project.buildFileName = "${project.name}.gradle"

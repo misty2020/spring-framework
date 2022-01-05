@@ -1,0 +1,37 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2022_1_5_11_22__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2022_1_5_11_22__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2022_1_5_11_22__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1641352965056)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_2022_1_5_11_22__Changes_.xml	(date 1641352965056)
+@@ -0,0 +1,9 @@
++<changelist name="Uncommitted_changes_before_Update_at_2022_1_5_11_22_[Changes]" date="1641352950255" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_1_5_11_22_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2022/1/5 11:22 [Changes]" />
++  <binary>
++    <option name="BEFORE_PATH" value="spring-annopriciple/spring-getbean草图.eddx" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++</changelist>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1641352965075)
++++ b/.idea/vcs.xml	(date 1641352965075)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
